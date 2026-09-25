@@ -1,6 +1,6 @@
 # Grouping duplicate citizen complaints in a state ombudsman: a first operational account from Ceará, Brazil
 
-**Draft v0.1 — 23 September 2026**  
+**Draft v0.5 — 24 September 2026** (canonical text: `paper/article.tex`)  
 Practice paper (not yet submitted)
 
 Francisco Nauber Bernardo Gois^{1,*} and Berg Silva^{1}

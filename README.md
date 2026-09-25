@@ -4,12 +4,17 @@ First English draft of a practice paper on the Similaridade system used by the C
 
 This folder is separate from other ASESI repos. Internal code stays on CGE GitLab.
 
-## Draft
+## Draft (v0.5)
 
-- [paper/manuscript.md](paper/manuscript.md) — first version (English)
-- [paper/manuscript.pdf](paper/manuscript.pdf) — same text, for sharing
-- [docs/journal.md](docs/journal.md) — venue choice
-- [docs/sources.md](docs/sources.md) — what was taken from team messages (no personal data)
+- [paper/article.pdf](paper/article.pdf) — ACM DGOV look (`acmlarge`), the file to read
+- [paper/article.tex](paper/article.tex) — source in the official ACM template
+- [paper/article-plain.pdf](paper/article-plain.pdf) — same text, simpler layout
+- [paper/figures/](paper/figures/) — Grok Imagine conceptual figures plus matplotlib charts
+- [docs/perplexity-review.md](docs/perplexity-review.md) — Perplexity Sonar evaluation
+- [docs/journal.md](docs/journal.md) — venue and format notes
+- [docs/sources.md](docs/sources.md) — team notes used (no personal data)
+
+Format for review at ACM is `\documentclass[manuscript]{acmart}`. The compiled PDF uses `acmlarge`, which is the DGOV published page.
 
 ## Suggested journal
 

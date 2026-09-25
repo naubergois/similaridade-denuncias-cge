@@ -3,7 +3,12 @@
 *.log
 *.out
 *.toc
+*.bbl
+*.blg
 .venv/
 __pycache__/
+*.pyc
 .env
 secrets*
+.tectonic-cache/
+paper/figures/.mpl/
