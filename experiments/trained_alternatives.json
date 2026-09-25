@@ -1,0 +1,93 @@
+{
+  "disclaimer": "Laboratory only. CGE production stays TF-IDF + DBSCAN at cosine 0.75.",
+  "published_reference": {
+    "20ng_nmi": 0.725,
+    "qqp_f1": 0.89,
+    "note": "20NG NMI is SBERT-COB on the test split. QQP F1 is a GLUE-style fine-tune, not this holdout."
+  },
+  "rows": [
+    {
+      "probe": "cqa_webmasters_ndcg10",
+      "encoder": "bm25",
+      "method": "bm25_k1_1.5_b_0.75",
+      "n_queries": 506,
+      "n_corpus": 17405,
+      "ndcg_at_10": 0.3227,
+      "note": "one forum; the published task averages twelve",
+      "source": "measured"
+    },
+    {
+      "probe": "cqa_webmasters_ndcg10",
+      "encoder": "bm25+minilm",
+      "method": "alpha_0.5_row_scaled",
+      "ndcg_at_10": 0.3832,
+      "n_queries": 506,
+      "n_corpus": 17405,
+      "note": "one forum; alpha fixed before the score",
+      "source": "measured"
+    },
+    {
+      "probe": "cqa_webmasters_ndcg10",
+      "encoder": "bm25+mpnet",
+      "method": "alpha_0.5_row_scaled",
+      "ndcg_at_10": 0.4023,
+      "n_queries": 506,
+      "n_corpus": 17405,
+      "note": "one forum; alpha fixed before the score",
+      "source": "measured"
+    },
+    {
+      "probe": "20ng_test_k20",
+      "encoder": "minilm-finetuned-20way",
+      "method": "softmax_head_epochs_2_then_kmeans",
+      "nmi": 0.5996,
+      "n_train": 11014,
+      "n_test": 7317,
+      "published_nmi": 0.725,
+      "note": "train split only for the head; test split is clustered with KMeans k=20",
+      "source": "measured"
+    },
+    {
+      "probe": "qqp_pair_finetune",
+      "encoder": "minilm-cosine-finetune",
+      "method": "mse_on_cosine_1epoch",
+      "n_pairs": 16000,
+      "n_fit": 11520,
+      "n_test": 3200,
+      "published_f1": 0.89,
+      "note": "balanced sample of QQP train.tsv, not the GLUE test set",
+      "tau": 0.54,
+      "test_f1": 0.8348,
+      "test_acc": 0.8141,
+      "source": "measured"
+    },
+    {
+      "probe": "qqp_pair_finetune",
+      "encoder": "minilm-cross-encoder",
+      "method": "pair_sequence_softmax_1epoch",
+      "n_pairs": 16000,
+      "n_fit": 11520,
+      "n_test": 3200,
+      "test_f1": 0.8332,
+      "test_acc": 0.8222,
+      "published_f1": 0.89,
+      "note": "balanced sample of QQP train.tsv, not the GLUE test set",
+      "source": "measured"
+    },
+    {
+      "probe": "qqp_pair_finetune",
+      "encoder": "minilm-cross-encoder",
+      "method": "pair_sequence_softmax_4epochs_best_tune",
+      "n_pairs": 16000,
+      "n_fit": 11520,
+      "n_test": 3200,
+      "chosen_epoch": 4,
+      "tune_f1": 0.8245,
+      "test_f1": 0.8375,
+      "test_acc": 0.8291,
+      "published_f1": 0.89,
+      "note": "balanced sample of QQP train.tsv, epoch chosen on the tune slice, not the GLUE test set",
+      "source": "measured"
+    }
+  ]
+}

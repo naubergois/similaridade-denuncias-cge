@@ -10,5 +10,6 @@ __pycache__/
 *.pyc
 .env
 secrets*
+experiments/data/
 .tectonic-cache/
 paper/figures/.mpl/

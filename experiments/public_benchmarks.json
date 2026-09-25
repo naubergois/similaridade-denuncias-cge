@@ -1,0 +1,101 @@
+{
+  "rule": {
+    "encoder": "TF-IDF unigrams\u2013trigrams, L2",
+    "clusterer": "DBSCAN, cosine distance",
+    "eps": 0.25,
+    "min_samples": 2,
+    "accept": "|C|>=2 and mean pairwise cosine >= 0.75"
+  },
+  "source": "measured on files in experiments/data and sklearn 20 Newsgroups",
+  "not_run": [
+    "Events 2012 (tweet-id hydration; no Twitter API in this run)"
+  ],
+  "failed": [],
+  "rows": [
+    {
+      "name": "20 Newsgroups",
+      "gold_kind": "theme",
+      "n": 720,
+      "grouped": 23,
+      "rho": 0.0319,
+      "n_clusters": 10,
+      "leftovers": 697,
+      "gold_families": 6,
+      "bcubed_p": 1.0,
+      "bcubed_r": 0.0088,
+      "bcubed_f1": 0.0174,
+      "tau": 0.75,
+      "eps": 0.25,
+      "note": "sklearn fetch_20newsgroups train, 6 groups, first 120 texts/group after length filter, seed=20260925",
+      "source": "measured"
+    },
+    {
+      "name": "BBC News",
+      "gold_kind": "theme",
+      "n": 2225,
+      "grouped": 379,
+      "rho": 0.1703,
+      "n_clusters": 189,
+      "leftovers": 1846,
+      "gold_families": 5,
+      "bcubed_p": 1.0,
+      "bcubed_r": 0.0027,
+      "bcubed_f1": 0.0053,
+      "tau": 0.75,
+      "eps": 0.25,
+      "note": "bbc-fulltext.zip, 5 topics, all kept files",
+      "source": "measured"
+    },
+    {
+      "name": "Reuters-21578",
+      "gold_kind": "theme",
+      "n": 1510,
+      "grouped": 158,
+      "rho": 0.1046,
+      "n_clusters": 73,
+      "leftovers": 1352,
+      "gold_families": 8,
+      "bcubed_p": 0.9962,
+      "bcubed_r": 0.006,
+      "bcubed_f1": 0.0119,
+      "tau": 0.75,
+      "eps": 0.25,
+      "note": "reuters21578.tar.gz, single-topic BODY+TITLE, top-8 topics, up to 200 docs/topic, seed=20260925, topics=['acq', 'crude', 'earn', 'interest', 'money-fx', 'money-supply', 'ship', 'trade']",
+      "source": "measured"
+    },
+    {
+      "name": "Quora QQP dups",
+      "gold_kind": "duplicate-question",
+      "n": 2225,
+      "grouped": 899,
+      "rho": 0.404,
+      "n_clusters": 301,
+      "leftovers": 1326,
+      "gold_families": 50,
+      "bcubed_p": 0.9904,
+      "bcubed_r": 0.0677,
+      "bcubed_f1": 0.1267,
+      "tau": 0.75,
+      "eps": 0.25,
+      "note": "QQP/train.tsv duplicate=1 pairs only, connected components, first families until n~2200, seed unused for pair filter",
+      "source": "measured"
+    },
+    {
+      "name": "CQADupStack webmasters",
+      "gold_kind": "duplicate-question",
+      "n": 1901,
+      "grouped": 21,
+      "rho": 0.011,
+      "n_clusters": 10,
+      "leftovers": 1880,
+      "gold_families": 506,
+      "bcubed_p": 0.9984,
+      "bcubed_r": 0.2693,
+      "bcubed_f1": 0.4242,
+      "tau": 0.75,
+      "eps": 0.25,
+      "note": "mteb/cqadupstack-webmasters corpus+queries+qrels, only ids in a duplicate component, missing_text=0",
+      "source": "measured"
+    }
+  ]
+}

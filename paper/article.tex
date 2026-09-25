@@ -20,20 +20,33 @@
 \title{Grouping Duplicate Citizen Complaints in a State Ombudsman}
 \subtitle{An operational account from Cear\'{a}, Brazil}
 
-\author{Francisco Nauber Bernardo Gois}
-\affiliation{%
-  \institution{Controladoria e Ouvidoria Geral do Estado do Cear\'{a} (CGE-CE)}
-  \city{Fortaleza}
-  \country{Brazil}}
-\email{francisco.gois@cge.ce.gov.br}
-
 \author{Berg Silva}
 \affiliation{%
   \institution{Controladoria e Ouvidoria Geral do Estado do Cear\'{a} (CGE-CE)}
   \city{Fortaleza}
   \country{Brazil}}
 
-\renewcommand{\shortauthors}{Gois and Silva}
+\author{Charles}
+\affiliation{%
+  \institution{Controladoria e Ouvidoria Geral do Estado do Cear\'{a} (CGE-CE)}
+  \city{Fortaleza}
+  \country{Brazil}}
+
+\author{Ana Luiza Cruz}
+\affiliation{%
+  \institution{Controladoria e Ouvidoria Geral do Estado do Cear\'{a} (CGE-CE)}
+  \city{Fortaleza}
+  \country{Brazil}}
+
+\author{Francisco Nauber Bernardo Gois}
+\authornote{Corresponding author.}
+\affiliation{%
+  \institution{Controladoria e Ouvidoria Geral do Estado do Cear\'{a} (CGE-CE)}
+  \city{Fortaleza}
+  \country{Brazil}}
+\email{francisco.gois@cge.ce.gov.br}
+
+\renewcommand{\shortauthors}{Silva et al.}
 
 \begin{CCSXML}
 <ccs2012>
@@ -66,20 +79,20 @@ A citizen can tell the same story ten times in one morning. Each wording looks l
 
 Similaridade is the grouping job used by the Controladoria e Ouvidoria Geral do Estado do Cear\'{a} (CGE-CE). It asks whether two free-text complaints point to the same event. On one historical batch of 4{,}389 real complaints, the production stack (TF-IDF + DBSCAN, keep a group if mean intra-cluster cosine similarity $\ge 0.75$) grouped 62.4\% of the texts. The same batch, encoded with sentence embeddings and clustered with HDBSCAN, grouped an inferred 82.5\% before any language model. Adding a leftover pass through DeepSeek R1 raised the reported share to 84.9\% (3{,}725 complaints). That last step recovered 104 of 768 leftovers after seeing only 27 candidates. How those 27 were chosen is not in the team note. Whether the model ran inside CGE is also unknown. We therefore treat 84.9\% as an ablation with an undocumented filter, not as a deployment result.
 
-None of these rates is a precision. The Ouvidoria has not labeled a sample of ``same case.'' In September 2026 the live job at times collapsed to a single cluster. The claim that survives is smaller: lexical clustering already catches copy-paste waves; a semantic stack grouped more of the same historical set; daily production of that stack, and any leftover language-model path, is still being earned.
+None of these rates is a precision. The Ouvidoria has not labeled a sample of ``same case.'' The same production rule, replayed on downloaded public packs, grouped 3.2\% of a 20~Newsgroups slice, 17.0\% of BBC News, and 10.5\% of a Reuters single-topic slice. In September 2026 the live job at times collapsed to a single cluster. The claim that survives is smaller: lexical clustering already catches copy-paste waves; a semantic stack grouped more of the same historical set; daily production of that stack, and any leftover language-model path, is still being earned.
 \end{abstract}
 
 \begin{document}
 \maketitle
 
 \begin{quote}
-\small\textit{Draft v0.5 --- 24 September 2026. Practice paper aimed at ACM DGOV, not submitted. Authorship is provisional. Diagrams: Grok Imagine, type set from team counts. Prior Sonar read: \texttt{docs/perplexity-review.md}. Venue note: \texttt{docs/journal.md}.}
+\small\textit{Draft v0.5 --- 24 September 2026. Practice paper aimed at ACM DGOV, not submitted. Authorship is provisional. Figures: Grok Imagine scene; rates and labels typeset from team counts. Prior Sonar read: \texttt{docs/perplexity-review.md}. Venue note: \texttt{docs/journal.md}.}
 \end{quote}
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=\textwidth]{figures/grok_paper_summary.png}
-\caption{Graphical abstract. Scene drawn with Grok Imagine; title, rates, and the limit set in type from the team note. Grouping rate is not precision. The leftover language-model step remains an ablation.}
+\includegraphics[width=\textwidth]{figures/fig_abstract.png}
+\caption{Graphical abstract. Scene drawn with Grok Imagine; rates and the acceptance rule typeset from the team note. $\rho$ is a grouping rate, not precision. The leftover language-model step is an ablation.}
 \label{fig:teaser}
 \end{figure*}
 
@@ -109,8 +122,8 @@ Public grievance research splits into three jobs that are easy to mix up. Figure
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=0.92\textwidth]{figures/grok_infographic_jobs.png}
-\caption{Three jobs that public-sector NLP often mixes. Route sends a text to a unit. Theme sorts a mixed pile. Case puts two tellings of one event in one folder. Only the third job is Similaridade. Diagram: Grok Imagine; labels set in type.}
+\includegraphics[width=0.92\textwidth]{figures/fig_jobs.png}
+\caption{Three jobs on citizen text. Route assigns a unit. Theme discovers a topic. Case groups the same event. Only the third job is Similaridade. Scene: Grok Imagine; labels set in type.}
 \label{fig:case}
 \end{figure*}
 
@@ -121,7 +134,7 @@ A first line assigns a complaint to a unit or a service. Das et al.\ used senten
 A second line asks what citizens talk about. BERTopic embeds documents, reduces them, clusters with HDBSCAN, and labels each cluster with class-based TF-IDF~\cite{grootendorst2022bertopic}. Tang, Pan, and Gu used that recipe on China's online government inquiry platform~\cite{tang2024bertopic}. Theme models help policy. They are the wrong metric when an officer must link a copy-paste wave that shares one event and many wordings.
 
 \paragraph{Duplicate and same-event grouping.}
-A third line asks whether two records are the same complaint or the same event. That is record linkage and duplicate detection, not topic modelling~\cite{fellegi1969linkage,elmagarmid2007duplicate}. Broder's resemblance test did the job for web pages~\cite{broder1997resemblance}. Rabbi et al.\ did it for Portuguese consumer complaints across Consumidor.gov.br, Procon, and Sindec: BERTimbau embeddings~\cite{souza2020bertimbau}, a cosine threshold set with domain experts (90\% in their study), and a 30-day window. Most of their duplicates arrived inside that window~\cite{rabbi2026duplicate}. Their unit is often the same consumer repeating a claim. An ombudsman wave can also be many people writing one outage. Esperan\c{c}a et al.\ clustered informatics complaints in a Portuguese public agency so repeated issues surface once; the target is still a category~\cite{esperanca2025complaint}. Romberg and Escher, writing in DGOV itself, treat duplicate detection as one of three evaluation jobs on citizen text, and they name the same gaps we still have: quality of the groups, non-English corpora, and a tool an officer can actually run~\cite{romberg2023citizens}. Chen et al.\ turn government complaints into a classification problem so a server can route a reply~\cite{chen2022igcp}. That is still routing. Similaridade does not pick a department. It asks whether two files should share one case.
+A third line asks whether two records are the same complaint or the same event. That is record linkage and duplicate detection, not topic modelling~\cite{fellegi1969linkage,elmagarmid2007duplicate}. Broder's resemblance test did the job for web pages~\cite{broder1997resemblance}. Rabbi et al.\ did it for Portuguese consumer complaints across Consumidor.gov.br, Procon, and Sindec: BERTimbau embeddings~\cite{souza2020bertimbau}, a cosine threshold set with domain experts (90\% in their study), and a 30-day window. Most of their duplicates arrived inside that window~\cite{rabbi2026duplicate}. Their unit is often the same consumer repeating a claim. An ombudsman wave can also be many people writing one outage. Esperan\c{c}a et al.\ clustered informatics complaints in a Portuguese public agency so repeated issues surface once; the target is still a category~\cite{esperanca2025complaint}. The closest public gold for ``same question, different wording'' is CQADupStack, twelve StackExchange sites with duplicate-thread labels~\cite{hoogeveen2015cqadupstack}. News and social streams treat the same cut as first-story or event detection: TDT asked for the first story of an event~\cite{allan1998tdt}; Petrovi{\'c}, Osborne, and Lavrenko scaled that job to Twitter~\cite{petrovic2010fsd}; McMinn, Moshfeghi, and Jose released Events~2012 with more than 500 crowd-judged events~\cite{mcminn2013events}. Those corpora are the right family. 20~Newsgroups is not: Lang's collection is a topic filter, not an event partition~\cite{lang1995newsweeder}. Romberg and Escher, writing in DGOV itself, treat duplicate detection as one of three evaluation jobs on citizen text, and they name the same gaps we still have: quality of the groups, non-English corpora, and a tool an officer can actually run~\cite{romberg2023citizens}. Chen et al.\ turn government complaints into a classification problem so a server can route a reply~\cite{chen2022igcp}. That is still routing. Similaridade does not pick a department. It asks whether two files should share one case.
 
 \paragraph{Where Similaridade sits.}
 Table~\ref{tab:sota} places the stacks against that map. Production Cear\'{a} is lexical near-duplicate detection on short state-ombudsman texts, without the identity keys and time window Rabbi et al.\ could use. The homolog stack is embeddings + HDBSCAN, plus an optional leftover language model. It is not a BERTopic run: there is no class-based TF-IDF topic label on the main clusters. What this draft still lacks is a human label of ``same case.'' Without that label, a higher grouping rate can just mean a more permissive merge. The metric that would decide the argument is BCubed precision and recall against officer gold~\cite{amigo2009bcubed}, not the share of texts placed in some group.
@@ -144,6 +157,13 @@ Rakhimzhanov et al.~\cite{rakhimzhanov2025transport} & Route & E5 / BGE / LLM & 
 Silva et al.~\cite{silva2026bridging} & Route (service) & BM25 + dense + RAG & Retrieval \\
 Esperan\c{c}a et al.~\cite{esperanca2025complaint} & Theme / pattern & BERT embeddings & Semantic clusters \\
 Rabbi et al.~\cite{rabbi2026duplicate} & Duplicate & BERTimbau & Threshold + 30 days \\
+Hoogeveen et al.~\cite{hoogeveen2015cqadupstack} & Duplicate question & cQA threads & Retrieval / pair \\
+Allan et al.~\cite{allan1998tdt} & First story / event & News stream & TDT tasks \\
+McMinn et al.~\cite{mcminn2013events} & Same event (tweets) & Events 2012 & Crowd events \\
+Lang~\cite{lang1995newsweeder} & Theme (newsgroup) & 20 Newsgroups & Topic labels \\
+Greene and Cunningham~\cite{greene2006bbc} & Theme (news) & BBC News & Topic labels \\
+Lewis~\cite{lewis1997reuters} & Theme (wires) & Reuters-21578 & Topic labels \\
+Wang et al.~\cite{wang2018glue} & Duplicate question & Quora (GLUE QQP) & Pair label \\
 Similaridade (production) & Case & TF-IDF & DBSCAN \\
 Similaridade (no LLM) & Case & Sentence embeddings & HDBSCAN \\
 Similaridade (leftover LLM) & Case / theme? & Prompt on leftovers & Filter unknown \\
@@ -283,8 +303,8 @@ Figure~\ref{fig:pipeline} shows the two stacks. Table~\ref{tab:manifest} is the 
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=0.95\textwidth]{figures/grok_infographic_flow.png}
-\caption{Homolog path on the same incoming text: complaint, embed, HDBSCAN, leftover, officer stamp. The leftover station is an ablation; host and candidate rule are unknown. Diagram: Grok Imagine; labels set in type.}
+\includegraphics[width=\textwidth]{figures/fig1_pipeline.png}
+\caption{Three treatments on the same incoming batch. Production is lexical. Homolog HDBSCAN is inferred by removing the 104 recoveries. The leftover language-model path is an ablation: the map $L\to K$ is unknown. Scene: Grok Imagine; stations and rates set in type.}
 \label{fig:pipeline}
 \end{figure*}
 
@@ -332,8 +352,8 @@ Grouped items are shown in three queues (Figure~\ref{fig:bands}): green (suggest
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\columnwidth]{figures/grok_bands.png}
-\caption{Conceptual illustration (Grok Imagine). Three trays: suggested bulk link, confirm, read with care. The stamp waits on every tray. These are interface queues, not a measured safety threshold.}
+\includegraphics[width=\columnwidth]{figures/fig_bands.png}
+\caption{Provisional review queues mapped to Fellegi--Sunter pair decisions. The cuts that send a cluster to a queue are not in the team note. Scene: Grok Imagine; queue labels set in type.}
 \label{fig:bands}
 \end{figure}
 
@@ -343,12 +363,12 @@ Grouped items are shown in three queues (Figure~\ref{fig:bands}): green (suggest
 
 Figure~\ref{fig:rate} and Table~\ref{tab:rates} split what v0.3 still printed as one jump.
 
-\begin{figure*}[t]
+\begin{figure}[t]
 \centering
-\includegraphics[width=0.92\textwidth]{figures/grok_infographic_rates.png}
-\caption{Three treatments on the same 4{,}389 complaints. Stack height is schematic, not to scale. Printed rates are the team counts. The middle value is inferred ($3{,}725-104$). The right-hand 84.9\% includes an undocumented leftover filter. None of the rates is a precision. Diagram: Grok Imagine; numbers set in type.}
+\includegraphics[width=0.92\columnwidth]{figures/fig2_grouping_rate.png}
+\caption{Grouping rate $\rho$ on the same 4{,}389 complaints. Folder stacks are schematic. Printed rates are the team counts. The middle value is inferred ($3{,}725-104$). None of the rates is a precision.}
 \label{fig:rate}
-\end{figure*}
+\end{figure}
 
 \begin{table}[t]
 \caption{Grouping rates on the 4{,}389-complaint batch. The last column is not precision.}
@@ -370,8 +390,8 @@ The leftover path is in Figure~\ref{fig:funnel}: $768 \rightarrow 27 \rightarrow
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\columnwidth]{figures/grok_funnel.png}
-\caption{Conceptual illustration (Grok Imagine) of the leftover path. Counts on this batch: $768 \rightarrow 27 \rightarrow 104$ in 21 groups. The selection rule for the 27 is unknown, so the 104 cannot yet be audited.}
+\includegraphics[width=\columnwidth]{figures/fig3_outlier_funnel.png}
+\caption{Homolog leftover path. Counts typeset from the team note: $768 \rightarrow 27 \rightarrow 104$ in 21 groups. The selection rule for the 27 is unknown, so the 104 cannot yet be audited.}
 \label{fig:funnel}
 \end{figure}
 
@@ -387,6 +407,72 @@ A 97.6\% grouping rate on a campaign day is not in conflict with 62.4\% on the l
 \caption{Production TF-IDF + DBSCAN on 28 August 2026. Large clusters read as copy-paste or light paraphrase, not as ordinary mixed traffic.}
 \label{fig:day}
 \end{figure*}
+
+\subsection{The same rule on public clustering sets}
+\label{sec:public}
+
+The Cear\'{a} batch has no officer gold. We do not invent one. We downloaded five public packs, ran the production rule on the texts, and wrote every count from that run into \texttt{experiments/public\_benchmarks.json}. Encoder: TF-IDF, 1--3 grams, $L_2$. Clusterer: DBSCAN on cosine distance, $\varepsilon=1-\tau=0.25$, $\mathrm{minPts}=2$. Keep a cluster only if mean pairwise cosine $\ge 0.75$. That $\varepsilon$ is the probe radius. It is not the missing Cear\'{a} radius. No complaint text left CGE. Events~2012 was not run: this machine has no Twitter token to hydrate tweet ids~\cite{mcminn2013events}.
+
+Three packs are theme gold: 720 posts from six groups of 20~Newsgroups~\cite{lang1995newsweeder}; all 2{,}225 BBC News articles~\cite{greene2006bbc}; 1{,}510 single-topic Reuters-21578 wires from the eight largest remaining topics, at most 200 per topic, seed 20260925~\cite{lewis1997reuters}. Two packs are duplicate-question gold: 2{,}225 Quora questions from duplicate=1 pairs in the GLUE QQP train file, taking connected components until that $n$~\cite{wang2018glue}; 1{,}901 webmaster questions that sit in a CQADupStack duplicate component (MTEB mirror of Hoogeveen et al.)~\cite{hoogeveen2015cqadupstack}.
+
+Figure~\ref{fig:public} and Table~\ref{tab:public} are those measured scores. On the three theme packs, $\rho$ is 3.2\%, 17.0\%, and 10.5\%. BCubed precision against the topic label stays near 1; recall stays below 0.01. The cut almost never rebuilds a newsgroup, a BBC desk, or a Reuters topic. On Quora duplicates it grouped 899 of 2{,}225 ($\rho=40.4\%$) in 301 clusters; BCubed $F_1$ against the pair components was 0.13, because those components are large paraphrase chains and the lexical cut only keeps the tight copies. On CQADupStack webmasters it grouped 21 of 1{,}901 ($\rho=1.1\%$) in 10 clusters; BCubed precision was 0.998 and $F_1$ was 0.42.
+
+A 0.75 lexical cut is Broder's job. It is not Lang's, Greene's, or Lewis's topic partition. It also does not recover a loose duplicate-question family.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig6_public_benchmarks.png}
+\caption{Measured production rule on the five downloaded packs. Theme gold on the left-hand jobs; duplicate-question gold on Quora and CQADupStack. $\rho$ is still not a Cear\'{a} precision.}
+\label{fig:public}
+\end{figure}
+
+\begin{table}[t]
+\caption{Measured production rule. Every cell comes from \texttt{experiments/public\_benchmarks.json}. BCubed is against that pack's gold, not against a COUVI officer. $\varepsilon=0.25$.}
+\label{tab:public}
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+Pack (gold) & $n$ & $\rho$ & Clusters & BCubed $P$ & BCubed $F_1$ \\
+\midrule
+20 Newsgroups (theme) & 720 & 3.2\% & 10 & 1.00 & 0.02 \\
+BBC News (theme) & 2{,}225 & 17.0\% & 189 & 1.00 & 0.01 \\
+Reuters-21578 (theme) & 1{,}510 & 10.5\% & 73 & 1.00 & 0.01 \\
+Quora QQP dups & 2{,}225 & 40.4\% & 301 & 0.99 & 0.13 \\
+CQADupStack webmasters & 1{,}901 & 1.1\% & 10 & 1.00 & 0.42 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Laboratory generic stacks (product unchanged)}
+\label{sec:generic}
+
+The Ouvidoria rule stays in production. For the paper we also ran task-aware laboratory stacks on the same five packs. Script: \texttt{experiments/run\_generic\_benchmarks.py}. Encoder: \texttt{sentence-transformers/all-MiniLM-L6-v2}~\cite{reimers2019sbert}. Theme packs use KMeans with $k$ equal to the number of gold classes. Duplicate-question packs use HDBSCAN with $\mathrm{min\_cluster\_size}=2$. No CGE complaint text. No change to Airflow or to the TF-IDF + DBSCAN job.
+
+Figure~\ref{fig:generic} and Table~\ref{tab:generic} compare BCubed $F_1$ against each pack's gold. On theme gold the laboratory stack lifts $F_1$ from near zero to 0.67 (20~Newsgroups), 0.92 (BBC), and 0.73 (Reuters). On duplicate-question gold it lifts Quora from 0.13 to 0.46 and CQADupStack webmasters from 0.42 to 0.58. Those gains are for other golds. They are not a licence to replace the Cear\'{a} production cut.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig7_generic_vs_production.png}
+\caption{Measured BCubed $F_1$ on the same five packs. Grey: CGE production rule. Teal: laboratory generic stack. The Ouvidoria product is unchanged.}
+\label{fig:generic}
+\end{figure}
+
+\begin{table}[t]
+\caption{Measured BCubed $F_1$ on downloaded packs. Production = TF-IDF + DBSCAN ($\tau=0.75$). Generic theme = MiniLM + KMeans($k$). Generic duplicate = MiniLM + HDBSCAN. Source: \texttt{experiments/generic\_benchmarks.json}.}
+\label{tab:generic}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Pack (gold) & $n$ & Prod.\ $F_1$ & Generic $F_1$ \\
+\midrule
+20 Newsgroups (theme) & 720 & 0.02 & 0.67 \\
+BBC News (theme) & 2{,}225 & 0.01 & 0.92 \\
+Reuters-21578 (theme) & 1{,}510 & 0.01 & 0.73 \\
+Quora QQP dups & 2{,}225 & 0.13 & 0.46 \\
+CQADupStack webmasters & 1{,}901 & 0.42 & 0.58 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \subsection{What broke after the test}
 
@@ -408,6 +494,8 @@ No COUVI officer has labeled this batch. The protocol below is what v0.5 must ru
 
 Lexical clustering already catches the easy wave: identical or near-identical paste. That is useful on a morning like 28 August. It is the wrong tool when two people write the same event in different words.
 
+The public probe in Section~\ref{sec:public} is the control that the Cear\'{a} note could not run. A 0.75 lexical cut almost never reconstructs a newsgroup, a BBC desk, or a Reuters topic. On labeled duplicate questions it either stays almost silent (CQADupStack) or groups the tight copies and misses the paraphrase chain (Quora). That is evidence for the job split in Figure~\ref{fig:case}, not a precision on ombudsman files. Section~\ref{sec:generic} shows that a different laboratory stack can raise BCubed $F_1$ on those packs. That stack is not the Ouvidoria product.
+
 The homolog HDBSCAN step moves the cut from tokens to sense. Rabbi et al.\ needed a time window and identity keys to call two consumer texts a duplicate~\cite{rabbi2026duplicate}. Similaridade does not yet use those keys. That is a gap, not a virtue: a 30-day window and an agency field would be the first cheap control on short texts.
 
 The leftover language-model pass follows the cost lesson in Rakhimzhanov et al.~\cite{rakhimzhanov2025transport}---spend the expensive model on leftovers---but the $768 \rightarrow 27 \rightarrow 104$ funnel is not yet a result. If the 27 candidates were chosen by a person who already saw the 104, the credit is circular.
@@ -419,7 +507,7 @@ Compared with Silva et al.~\cite{silva2026bridging} and Tang et al.~\cite{tang20
 The limits are part of the result.
 \begin{enumerate}
 \item Counts come from team reports, not from a frozen public extract of \texttt{etl.similaridade\_log}.
-\item There is no officer gold, so there is no precision, recall, $\kappa$, or BCubed score.
+\item There is no officer gold on the Cear\'{a} batch. BCubed in Table~\ref{tab:public} is against the gold of each downloaded pack, not against a COUVI stamp. Events~2012 was not run.
 \item The embedding checkpoint, DBSCAN radius, HDBSCAN size, and band cuts are unknown.
 \item The leftover language-model pass has an undocumented filter and an unstated host.
 \item September failures show that the homolog rates are not the current daily truth.
@@ -444,11 +532,11 @@ On 4{,}389 real complaints, TF-IDF + DBSCAN grouped 62.4\% of the texts. Embeddi
 The next version needs what this draft cannot invent: COUVI labels on a stratified sample, a filled manifest, and a week of production logs after Airflow is stable. Until then the honest claim is smaller. The Ouvidoria already groups copy-paste waves. A semantic stack grouped more of the same historical batch. Daily production of that stack is still being earned.
 
 \begin{acks}
-ASESI colleagues who discussed the method in June--September 2026, the COUVI officers who will have to trust or reject the green queue, and Lucas Pimentel, who hosts the internal GitLab project. Errors in this draft are the authors'.
+ASESI colleagues who discussed the method in June--September 2026, including Leonardo Borba and Oton; the COUVI officers who will have to trust or reject the green queue; and Lucas Pimentel, who hosts the internal GitLab project. Errors in this draft are the authors'.
 \end{acks}
 
 \section*{CRediT (provisional)}
-Conceptualization and writing (original draft): Francisco Nauber Bernardo Gois. Methodology, software, and investigation (homolog measurements): Berg Silva. Other roles to be assigned.
+Methodology, software, and investigation (homolog measurements): Berg Silva. Team review: Charles and Ana Luiza Cruz. Conceptualization and writing (original draft): Francisco Nauber Bernardo Gois. Other roles to be assigned.
 
 \section*{Funding}
 No external grant. Work done as part of CGE-CE / ASESI operations.
@@ -460,7 +548,7 @@ The authors work for the agency that operates the system. That is the point of a
 Complaint text is not public. Aggregate figures can be checked against CGE internal logs by staff with access.
 
 \section*{Use of AI tools}
-A language model helped organize this English draft from team notes. Diagrams and the graphical abstract were drawn with Grok Imagine (model grok-imagine-image-quality). Titles, rates, and captions were set in type from the team counts; the generator was not asked to write numerals. The 28 August production-day chart remains matplotlib. No complaint text was sent to an image or language model. The corresponding author is responsible for every number.
+A language model helped organize this English draft from team notes. Conceptual scenes were drawn with Grok Imagine (model grok-imagine-image-quality). Rates, counts, and captions were set in type from the team note; the generator was not asked to write numerals. The 28 August production-day chart remains matplotlib. No complaint text was sent to an image or language model. The corresponding author is responsible for every number.
 
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{refs}

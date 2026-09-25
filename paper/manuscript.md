@@ -3,7 +3,7 @@
 **Draft v0.5 — 24 September 2026** (canonical text: `paper/article.tex`)  
 Practice paper (not yet submitted)
 
-Francisco Nauber Bernardo Gois^{1,*} and Berg Silva^{1}
+Berg Silva^{1}, Charles^{1}, Ana Luiza Cruz^{1}, and Francisco Nauber Bernardo Gois^{1,*}
 
 ^{1} Controladoria e Ouvidoria Geral do Estado do Ceará (CGE-CE), Fortaleza, Brazil  
 \* Corresponding author: francisco.gois@cge.ce.gov.br
@@ -191,14 +191,15 @@ The next version of this paper needs three things the first version cannot inven
 
 ## Acknowledgments
 
-ASESI colleagues who discussed the method in June–September 2026: Ana Luiza Cruz, Charles, Leonardo Borba, Oton, and the COUVI officers named in Section 3. Lucas Pimentel hosts the internal GitLab project. Infrastructure notes came from the ASESI INFRA and ASESI DEV groups. Errors in this draft are the authors’.
+ASESI colleagues who discussed the method in June–September 2026: Leonardo Borba, Oton, and the COUVI officers named in Section 3. Lucas Pimentel hosts the internal GitLab project. Infrastructure notes came from the ASESI INFRA and ASESI DEV groups. Errors in this draft are the authors’.
 
 ---
 
 ## CRediT (provisional)
 
-- Conceptualization, writing (original draft): Francisco Nauber Bernardo Gois
 - Methodology, software, investigation (homolog measurements): Berg Silva
+- Team review: Charles and Ana Luiza Cruz
+- Conceptualization, writing (original draft): Francisco Nauber Bernardo Gois
 - Other roles (data curation, infrastructure, validation by Ouvidoria): to be assigned
 
 ---

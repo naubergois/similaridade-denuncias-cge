@@ -26,7 +26,7 @@
 {\scriptsize\color{rulec}\textbf{DRAFT v0.3 \quad ACM Digital Government: Research and Practice \quad practice paper}}\\[0.7em]
 {\LARGE\bfseries Grouping Duplicate Citizen Complaints\\[0.15em] in a State Ombudsman}\\[0.45em]
 {\large\textit{A first operational account from Cear\'{a}, Brazil}}\\[0.9em]
-Francisco Nauber Bernardo Gois\textsuperscript{*} and Berg Silva\\[0.25em]
+Berg Silva, Charles, Ana Luiza Cruz, and Francisco Nauber Bernardo Gois\textsuperscript{*}\\[0.25em]
 {\small Controladoria e Ouvidoria Geral do Estado do Cear\'{a} (CGE-CE), Fortaleza, Brazil}\\[0.15em]
 {\small\textsuperscript{*}francisco.gois@cge.ce.gov.br}\\[0.7em]
 {\small 23 September 2026 \textperiodcentered\ not submitted \textperiodcentered\ authorship provisional}
@@ -96,7 +96,7 @@ Figure~\ref{fig:pipeline} shows the two stacks on the same incoming text.
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=\textwidth]{figures/grok_pipeline.png}
+\includegraphics[width=\textwidth]{figures/fig1_pipeline.png}
 \caption{Two pipelines on the same complaint stream. Production (top) is lexical. Homolog (bottom) embeds the text, clusters without a fixed radius, and spends the LLM only on leftovers.}
 \label{fig:pipeline}
 \end{figure}
@@ -121,7 +121,7 @@ The leftover path is in Figure~\ref{fig:funnel}: 768 ungrouped, 27 candidates, 1
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.78\textwidth]{figures/grok_funnel.png}
+\includegraphics[width=0.78\textwidth]{figures/fig3_outlier_funnel.png}
 \caption{Homolog leftover path. How the 27 candidates were chosen is not yet documented.}
 \label{fig:funnel}
 \end{figure}
