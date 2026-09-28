@@ -1,0 +1,50 @@
+{
+  "disclaimer": "Laboratory only. CGE production stays TF-IDF + DBSCAN at cosine 0.75.",
+  "published": {
+    "nmi": 0.9512,
+    "ari": 0.9666,
+    "acc": 0.9761,
+    "paper": "arXiv:2412.14867 Dec 2024 GCC*"
+  },
+  "n": 2225,
+  "detail": {
+    "architecture": [
+      "majority",
+      "sonnet pair+exception",
+      "opus audit routed"
+    ],
+    "route_n": 37,
+    "flips": 26,
+    "close3": 14,
+    "majority_errors": 51,
+    "stage2_errors": 41,
+    "stage3_errors": 39,
+    "opus_fixed": 2,
+    "opus_broke": 0,
+    "opus_reverted_flips": 2,
+    "note": "gold not used to pick documents"
+  },
+  "rows": [
+    {
+      "method": "1 majority of 11",
+      "nmi": 0.9234,
+      "ari": 0.9451,
+      "acc": 0.9771,
+      "source": "measured"
+    },
+    {
+      "method": "2 sonnet pair80 + 5-way outside top-2",
+      "nmi": 0.9358,
+      "ari": 0.9554,
+      "acc": 0.9816,
+      "source": "measured"
+    },
+    {
+      "method": "3 opus audit on flips+close3",
+      "nmi": 0.9381,
+      "ari": 0.9575,
+      "acc": 0.9825,
+      "source": "measured"
+    }
+  ]
+}

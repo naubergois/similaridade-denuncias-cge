@@ -1,0 +1,136 @@
+{
+  "disclaimer": "Laboratory only. CGE production stays TF-IDF + DBSCAN at cosine 0.75.",
+  "published": {
+    "nmi": 0.9512,
+    "ari": 0.9666,
+    "acc": 0.9761,
+    "paper": "arXiv:2412.14867 Dec 2024 GCC*"
+  },
+  "n": 2225,
+  "detail": {
+    "border": 200,
+    "errors_before": 55,
+    "errors_in_border": 36,
+    "pair_flips": 21,
+    "pair_errors_after": 58,
+    "named_errors_after": 89,
+    "named_fixed": 20,
+    "named_broke": 54,
+    "model": "claude-haiku-4-5",
+    "protocol_note": "pair-exemplars is clustering; named-desks is zero-shot on the border"
+  },
+  "rows": [
+    {
+      "method": "mpnet+bge+tfidf64",
+      "nmi": 0.9182,
+      "ari": 0.9412,
+      "acc": 0.9753,
+      "source": "measured"
+    },
+    {
+      "method": "oracle border n=40",
+      "nmi": 0.9359,
+      "ari": 0.9538,
+      "acc": 0.9807,
+      "source": "measured"
+    },
+    {
+      "method": "llm pair-exemplars n=40",
+      "nmi": 0.9214,
+      "ari": 0.9439,
+      "acc": 0.9762,
+      "source": "measured"
+    },
+    {
+      "method": "llm named-desks n=40",
+      "nmi": 0.9115,
+      "ari": 0.9358,
+      "acc": 0.973,
+      "source": "measured"
+    },
+    {
+      "method": "oracle border n=80",
+      "nmi": 0.9527,
+      "ari": 0.9674,
+      "acc": 0.9865,
+      "source": "measured"
+    },
+    {
+      "method": "llm pair-exemplars n=80",
+      "nmi": 0.9223,
+      "ari": 0.9448,
+      "acc": 0.9766,
+      "source": "measured"
+    },
+    {
+      "method": "llm named-desks n=80",
+      "nmi": 0.9054,
+      "ari": 0.9312,
+      "acc": 0.9712,
+      "source": "measured"
+    },
+    {
+      "method": "oracle border n=120",
+      "nmi": 0.9597,
+      "ari": 0.9725,
+      "acc": 0.9888,
+      "source": "measured"
+    },
+    {
+      "method": "llm pair-exemplars n=120",
+      "nmi": 0.9203,
+      "ari": 0.9436,
+      "acc": 0.9762,
+      "source": "measured"
+    },
+    {
+      "method": "llm named-desks n=120",
+      "nmi": 0.8871,
+      "ari": 0.9156,
+      "acc": 0.9649,
+      "source": "measured"
+    },
+    {
+      "method": "oracle border n=160",
+      "nmi": 0.967,
+      "ari": 0.9779,
+      "acc": 0.991,
+      "source": "measured"
+    },
+    {
+      "method": "llm pair-exemplars n=160",
+      "nmi": 0.9192,
+      "ari": 0.9426,
+      "acc": 0.9757,
+      "source": "measured"
+    },
+    {
+      "method": "llm named-desks n=160",
+      "nmi": 0.8847,
+      "ari": 0.9133,
+      "acc": 0.964,
+      "source": "measured"
+    },
+    {
+      "method": "oracle border n=200",
+      "nmi": 0.9683,
+      "ari": 0.979,
+      "acc": 0.9915,
+      "source": "measured"
+    },
+    {
+      "method": "llm pair-exemplars n=200",
+      "nmi": 0.9143,
+      "ari": 0.9386,
+      "acc": 0.9739,
+      "source": "measured"
+    },
+    {
+      "method": "llm named-desks n=200",
+      "nmi": 0.8743,
+      "ari": 0.9041,
+      "acc": 0.96,
+      "source": "measured"
+    }
+  ]
+}

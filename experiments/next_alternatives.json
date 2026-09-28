@@ -1,0 +1,43 @@
+{
+  "disclaimer": "Laboratory only. CGE production stays TF-IDF + DBSCAN at cosine 0.75.",
+  "published_reference": {
+    "20ng_nmi": 0.725,
+    "qqp_f1": 0.89,
+    "cqa_note": "twelve-forum average, not this forum"
+  },
+  "rows": [
+    {
+      "probe": "20ng_test_k20",
+      "encoder": "minilm-contrastive",
+      "method": "inbatch_infonce_best_epoch_3_maxlen_256",
+      "nmi": 0.6364,
+      "linear_probe_nmi": 0.6277,
+      "linear_probe_acc": 0.7216,
+      "n_train": 11014,
+      "n_test": 7317,
+      "published_nmi": 0.725,
+      "note": "labels used only on the train split; KMeans NMI is the clustering number",
+      "source": "measured"
+    },
+    {
+      "probe": "cqa_webmasters_ndcg10",
+      "encoder": "e5-base",
+      "method": "bi_encoder_query_passage_prefix",
+      "ndcg_at_10": 0.3823,
+      "n_queries": 506,
+      "n_corpus": 17405,
+      "note": "one forum; published score averages twelve",
+      "source": "measured"
+    },
+    {
+      "probe": "cqa_webmasters_ndcg10",
+      "encoder": "e5-base+minilm-cross",
+      "method": "rerank_top20",
+      "ndcg_at_10": 0.378,
+      "n_queries": 506,
+      "n_corpus": 17405,
+      "note": "one forum; cross-encoder is the public MS MARCO MiniLM, not fine-tuned on CQA",
+      "source": "measured"
+    }
+  ]
+}

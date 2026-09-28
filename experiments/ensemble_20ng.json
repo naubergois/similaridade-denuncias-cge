@@ -1,0 +1,111 @@
+{
+  "disclaimer": "Laboratory only. CGE production unchanged. Published NMI 0.725 trains an encoder on the train split and clusters the test split.",
+  "rows": [
+    {
+      "name": "kmeans_minilm",
+      "n": 7317,
+      "n_clusters": 20,
+      "nmi": 0.5484,
+      "ami": 0.5446,
+      "published_nmi": 0.725,
+      "source": "measured"
+    },
+    {
+      "name": "kmeans_mpnet",
+      "n": 7317,
+      "n_clusters": 20,
+      "nmi": 0.582,
+      "ami": 0.5784,
+      "published_nmi": 0.725,
+      "source": "measured"
+    },
+    {
+      "name": "kmeans_bge-base",
+      "n": 7317,
+      "n_clusters": 20,
+      "nmi": 0.6016,
+      "ami": 0.5983,
+      "published_nmi": 0.725,
+      "source": "measured"
+    },
+    {
+      "name": "consensus_minilm_mpnet_bge",
+      "n": 7317,
+      "n_clusters": 20,
+      "nmi": 0.5925,
+      "ami": 0.5891,
+      "published_nmi": 0.725,
+      "source": "measured",
+      "uses_train_labels": false
+    },
+    {
+      "name": "kmeans_concat_three_encoders",
+      "n": 7317,
+      "n_clusters": 20,
+      "nmi": 0.5962,
+      "ami": 0.5928,
+      "published_nmi": 0.725,
+      "source": "measured",
+      "uses_train_labels": false
+    },
+    {
+      "name": "kmeans_tfidf_svd_plus_bge",
+      "n": 7317,
+      "n_clusters": 20,
+      "nmi": 0.6006,
+      "ami": 0.5973,
+      "published_nmi": 0.725,
+      "source": "measured",
+      "uses_train_labels": false
+    },
+    {
+      "name": "nearest_centroid_bge",
+      "nmi": 0.6217,
+      "ami": 0.6185,
+      "n_clusters": 20,
+      "published_nmi": 0.725,
+      "uses_train_labels": true,
+      "source": "measured",
+      "accuracy": 0.7014
+    },
+    {
+      "name": "lda_bge",
+      "nmi": 0.64,
+      "ami": 0.6369,
+      "n_clusters": 20,
+      "published_nmi": 0.725,
+      "uses_train_labels": true,
+      "source": "measured",
+      "accuracy": 0.7267
+    },
+    {
+      "name": "logreg_bge",
+      "nmi": 0.6384,
+      "ami": 0.6354,
+      "n_clusters": 20,
+      "published_nmi": 0.725,
+      "uses_train_labels": true,
+      "source": "measured",
+      "accuracy": 0.7278
+    },
+    {
+      "name": "kmeans_init_train_centroids_bge",
+      "nmi": 0.6025,
+      "ami": 0.5992,
+      "n_clusters": 20,
+      "published_nmi": 0.725,
+      "uses_train_labels": true,
+      "source": "measured"
+    },
+    {
+      "name": "mlp_bge",
+      "nmi": 0.6262,
+      "ami": 0.623,
+      "accuracy": 0.7197,
+      "n_clusters": 20,
+      "published_nmi": 0.725,
+      "uses_train_labels": true,
+      "source": "measured"
+    }
+  ]
+}

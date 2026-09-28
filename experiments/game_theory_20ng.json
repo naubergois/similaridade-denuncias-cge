@@ -1,0 +1,34 @@
+{
+  "rows": [
+    {
+      "name": "hedonic_nash_bge",
+      "nmi": 0.6047,
+      "n_clusters": 20,
+      "published_nmi": 0.725,
+      "source": "measured"
+    },
+    {
+      "name": "dominant_set_replicator_bge",
+      "nmi": 0.2617,
+      "n_clusters": 40,
+      "published_nmi": 0.725,
+      "source": "measured"
+    },
+    {
+      "name": "shapley_reweight_nearest_centroid",
+      "nmi": 0.6101,
+      "n_clusters": 20,
+      "published_nmi": 0.725,
+      "source": "measured",
+      "uses_train_labels": true
+    },
+    {
+      "name": "shapley_reweight_kmeans",
+      "nmi": 0.5827,
+      "n_clusters": 20,
+      "published_nmi": 0.725,
+      "source": "measured",
+      "uses_train_labels": true
+    }
+  ]
+}

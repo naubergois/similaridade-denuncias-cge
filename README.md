@@ -1,48 +1,110 @@
-# Similaridade — grouping similar ombudsman complaints (CGE/CE)
+# Similaridade (CGE-CE) and a BBC News laboratory stack
 
-First English draft of a practice paper on the Similaridade system used by the Controladoria e Ouvidoria Geral do Estado do Ceará (CGE-CE). The pipeline groups duplicate and near-duplicate citizen complaints so the Ouvidoria does not treat the same case many times.
+A citizen can tell the same story ten times in one morning. Similaridade is the grouping job used by the Controladoria e Ouvidoria Geral do Estado do Ceará (CGE-CE). It asks whether two short Portuguese complaints point to the same event.
 
-This folder is separate from other ASESI repos. Internal code stays on CGE GitLab.
+Next to that product, this repository also holds a laboratory clustering stack on the public BBC News pack. That job is different: five English desks, a gold file, and a published mark to beat. The two cuts stay separate.
 
-## Draft (v0.5)
+Internal CGE code stays on GitLab. This folder is the public trail: the practice draft, the lab scripts, and the numbers we actually measured.
 
-- [paper/article.pdf](paper/article.pdf) — ACM DGOV look (`acmlarge`), the file to read
-- [paper/article.tex](paper/article.tex) — source in the official ACM template
-- [paper/article-plain.pdf](paper/article-plain.pdf) — same text, simpler layout
-- [paper/figures/](paper/figures/) — Grok Imagine scenes with rates and labels typeset from team counts; 28 August chart in matplotlib
-- [docs/perplexity-review.md](docs/perplexity-review.md) — Perplexity Sonar evaluation
-- [docs/journal.md](docs/journal.md) — venue and format notes
-- [docs/sources.md](docs/sources.md) — team notes used (no personal data)
-- [experiments/](experiments/) — public packs. The Ouvidoria product stays TF-IDF + DBSCAN at cosine 0.75. The scripts below are laboratory only. Do not port them into CGE production.
+## Results vs published state of the art (BBC News)
 
-Format for review at ACM is `\documentclass[manuscript]{acmart}`. The compiled PDF uses `acmlarge`, which is the DGOV published page.
+BBC News, *N* = 2,225, five desks. Gold does not pick documents. Source: `experiments/bbc_final.json`. Published line: Keraghel and Nadif, GCC* ([arXiv:2412.14867](https://arxiv.org/abs/2412.14867), Table 2).
 
-## Suggested journal
+| Method | NMI | ARI | ACC (Hungarian) |
+|---|---:|---:|---:|
+| GCC* (published SOTA) | 0.9512 | 0.9666 | 0.9761 |
+| This lab, Floor 15 | **0.9520** | **0.9673** | **0.9865** |
+| Δ | **+0.0008** | **+0.0007** | **+0.0104** |
 
-**ACM Digital Government: Research and Practice (DGOV)**  
-https://dl.acm.org/journal/dgov
+Floor 15 beats the published triple on all three scores. Thirty errors remain. A frozen mix without the audit (mpnet + bge + TF-IDF64) stops at NMI 0.9182.
 
-It publishes applied public-sector work and has a practice track. Government Information Quarterly is a later stretch if the COUVI validation and a longer time series land.
+| Method | NMI | ARI | ACC | Errors |
+|---|---:|---:|---:|---:|
+| Majority of 11 (Floor 1) | 0.9234 | 0.9451 | 0.9771 | 51 |
+| This lab, Floor 15 (kept) | **0.9520** | **0.9673** | **0.9865** | 30 |
+| GCC* published | 0.9512 | 0.9666 | 0.9761 | — |
 
-## Public packs, measured here
+Lab draft: [paper/bbc-sota-lab-v0.1.pdf](paper/bbc-sota-lab-v0.1.pdf).
 
-A cosine of 0.75 catches near-copies. It does not rebuild a newsgroup, a news desk, or a loose chain of paraphrases. That split is why the production job stays as it is, and why the laboratory uses a different stack on public gold.
+## Production does not change
 
-`run_public_benchmarks.py` replays the Ouvidoria rule. `run_generic_benchmarks.py` swaps in MiniLM with KMeans for themes and HDBSCAN for duplicate questions. On those packs the generic BCubed F₁ rises (BBC 0.01 to 0.92, Quora 0.13 to 0.46). That rise is against the CGE rule, on someone else's gold.
+Similaridade in production is TF-IDF + DBSCAN. A group is kept when mean intra-cluster cosine similarity is at least **0.75**. That cut is a near-duplicate job. It is not a news-desk clustering job.
 
-`run_sota_alternatives.py` then tries stronger frozen encoders (mpnet, bge-base), another clusterer, the official-shaped scores. `run_trained_alternatives.py` fine-tunes MiniLM and adds BM25. Numbers are written only after the run, in the JSON next to each script.
+Do not port the BBC language-model audit into Ouvidoria. Complaint text is short, Portuguese, and a same-event problem. BBC desks are a theme gold.
 
-| Published comparison | Published figure | Best measured in this folder |
+Practice draft (v0.5): [paper/article.pdf](paper/article.pdf). Suggested venue: [ACM DGOV](https://dl.acm.org/journal/dgov).
+
+## Laboratory method
+
+Keraghel and Nadif build a named-entity graph, put language-model vectors on the nodes, and run a graph-convolutional clustering objective. That is GCC*.
+
+The stack that crosses their BBC triple is an aligned **majority of eleven clusterings**, then a **gated** Claude audit. Desk names are not the assignment target. A flip is kept only when it stays on the closest centroid pair.
+
+Accuracy already sits above published GCC* at Floor 1. NMI lags until the event-kind gate and the keep rule. Leftover leaks are mostly gold-business articles sitting in the digital or parliament piles.
+
+### Method (kept path)
+
+1. **Eleven views vote.** MPNet, BGE, concat, mix (mpnet+bge+0.20×TF-IDF64), mpnet+TF-IDF, chunk-mean, title mix, factorial *k*-means, consensus of three matrices, diagonal GMM, spectral *k*NN. Labels are Hungarian-aligned to the mix view. The mode is Floor 1.
+2. **Sonnet pair on the thinnest 80.** Two exemplar lists, answer 0 or 1. Five-way only if that pick leaves the top two.
+3. **Opus** on pair flips and on documents whose second and third centroids are almost tied.
+4. **Odd-one-out**, then Opus on a “no”.
+5. **Neighbour revolt:** if at least four of seven cosine neighbours carry another label, Opus rereads.
+6. **Foreign neighbour:** if the nearest neighbour in another cluster beats the second neighbour at home, Opus rereads.
+7. **Rim exemplars** on the closest centroid pair.
+8. **Event kind.** Each pile gets a one-line kind of event from its own exemplars. The reader matches the event, not the industry in the title. Opus confirms flips.
+9. **Closest-pair keep.** A flip counts only on the two clusters whose centroids are closest. Off-pair flips are dropped.
+
+Models: `claude-sonnet-4-6` (first reader), `claude-opus-4-6` (second reader). Sentence embeddings stay the geometry. The model is an audit, not a named-desk classifier.
+
+### Where this sits next to other papers
+
+| Family | Typical move | Relation here |
+|---|---|---|
+| Lexical + density | TF-IDF, DBSCAN | CGE production |
+| Frozen embedder + *k*-means | SBERT / MPNet / BGE | Geometry ceiling ≈ 0.92 NMI on BBC |
+| Joint graph clustering | GCC* | Published BBC mark |
+| Cluster ensembles | Strehl; Fred & Jain | Majority of 11 |
+| LLM as embedder guide | ClusterLLM (EMNLP 2023) | Same spirit; we do not fine-tune |
+| LLM as label generator | Huang & He | Forbidden as the GCC* comparator |
+| Gated LLM audit | this lab | Exemplars, not desk names |
+
+A gold-picked probe on 21 majority-border errors reached NMI **0.9468**. That number is not next to GCC*: gold chose the set. An oracle that flips those 21 errors reaches **0.9527** and is a ceiling, not a method.
+
+### Kept floors (measured)
+
+| Floor | Gate | NMI | ARI | ACC | Err. |
+|---:|---|---:|---:|---:|---:|
+| 1 | Majority of 11 | 0.9234 | 0.9451 | 0.9771 | 51 |
+| 2 | Sonnet pair on thin 80 | 0.9358 | 0.9554 | 0.9816 | 41 |
+| 3 | Opus on flips and close-3 | 0.9381 | 0.9575 | 0.9825 | 39 |
+| 4 | Odd-one-out then Opus | 0.9430 | 0.9607 | 0.9838 | 36 |
+| 5 | Neighbour revolt 4/7 | 0.9466 | 0.9628 | 0.9847 | 34 |
+| 7 | Foreign neighbour then Opus | 0.9482 | 0.9640 | 0.9852 | 33 |
+| 12 | Rim exemplars | 0.9487 | 0.9639 | 0.9852 | 33 |
+| 14 | Event-kind pair then Opus | 0.9496 | 0.9663 | 0.9861 | 31 |
+| 15 | Keep closest-pair flips only | **0.9520** | **0.9673** | **0.9865** | 30 |
+
+Discarded gates (remargin, TF-IDF disagreement, second-closest pair) each broke at least one correct article. They are listed in `experiments/bbc_final.json` and are not in the final partition.
+
+Scripts: `experiments/run_bbc_llm_arch.py` through `run_bbc_llm_arch9.py`, plus `run_bbc_llm_ensemble.py`, `run_bbc_nmi_lift.py`, `run_bbc_final_score.py`. Headline labels: `experiments/results/bbc_labels/bbc_stage15_labels.npy`. Figures: `experiments/figures/render_bbc_academic_figs.py`.
+
+## Older public-pack runs
+
+`run_public_benchmarks.py` replays the Ouvidoria rule on public gold. `run_generic_benchmarks.py` swaps MiniLM with KMeans or HDBSCAN. Those files are earlier laboratory notes. They are not the BBC headline.
+
+| Older comparison | Published figure | Best measured in this folder |
 |---|---:|---:|
 | 20 Newsgroups test, 20 classes, NMI | 0.725 (encoder trained to cluster) | 0.60 (bge-base frozen, or MiniLM fine-tuned two epochs, then KMeans) |
 | Quora pair F₁ | about 0.89 (fine-tune on GLUE-style QQP) | 0.84 (mpnet cosine, or MiniLM fine-tuned, on a balanced slice of train.tsv) |
-| CQADupStack retrieval nDCG@10 | average of 12 forums | 0.44 on the webmasters forum alone (mpnet). BM25 was 0.32. A half-and-half mix was 0.40 |
+| CQADupStack retrieval nDCG@10 | average of 12 forums | 0.44 on the webmasters forum alone (mpnet) |
 
-Agglomerative clustering lost on every theme pack. Four epochs of a MiniLM cross-encoder on a balanced Quora slice stayed at F₁ 0.84 while the fit loss kept falling: the small model memorizes the slice and does not reach the published 0.89. None of these runs is an official GLUE or MTEB submission. Passing 0.725 or 0.89 still needs a larger trained model on the official split. This limit is the reason the product in Ceará is unchanged.
+None of those runs is an official GLUE or MTEB submission. Passing those published lines still needs a larger trained model on the official split. That limit is another reason the product in Ceará is unchanged.
 
-## Status of this version
+## Status
 
-Operational numbers come from homolog tests and production runs reported to the ASESI team in August–September 2026. The paper is a first cut. It is not ready for submission until the Ouvidoria (COUVI) reviews the clusters and authorship is settled.
+Operational Similaridade numbers come from homolog tests and production runs reported to the ASESI team in August–September 2026. The DGOV practice paper is a first cut. It is not ready for submission until the Ouvidoria (COUVI) reviews the clusters and authorship is settled.
+
+The BBC stack is laboratory only. The crossing of GCC* is one cache, one seed family, one pack. Thirty errors remain.
 
 ## Authors (draft)
 

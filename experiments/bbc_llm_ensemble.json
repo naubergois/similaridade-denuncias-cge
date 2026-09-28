@@ -1,0 +1,179 @@
+{
+  "disclaimer": "Laboratory only. CGE production stays TF-IDF + DBSCAN at cosine 0.75.",
+  "published": {
+    "nmi": 0.9512,
+    "ari": 0.9666,
+    "acc": 0.9761,
+    "paper": "arXiv:2412.14867 Dec 2024 GCC*"
+  },
+  "n": 2225,
+  "detail": {
+    "n_models": 11,
+    "models": [
+      "mpnet",
+      "bge",
+      "concat",
+      "mix",
+      "mpnet+tfidf",
+      "chunk",
+      "title",
+      "factorial_mix",
+      "consensus",
+      "gmm_mix",
+      "spectral_knn"
+    ],
+    "disputes": 22,
+    "unanimous": 1152,
+    "errors_mix": 55,
+    "errors_majority": 51,
+    "errors_llm_panel": 55,
+    "errors_named": 52,
+    "llm_panel_used": 21,
+    "llm_named_used": 22,
+    "oracle_recoverable_ties": 22,
+    "panel_fixed": 1,
+    "panel_broke": 5,
+    "named_fixed": 1,
+    "named_broke": 2,
+    "errors_majority_plus_pair80": 54,
+    "pair80_fixed": 8,
+    "pair80_broke": 11,
+    "model": "claude-haiku-4-5",
+    "protocol_note": "majority is clustering; panel/named on ties and pair-border are LLM stages"
+  },
+  "rows": [
+    {
+      "method": "panel mpnet",
+      "nmi": 0.9067,
+      "ari": 0.9306,
+      "acc": 0.9708,
+      "source": "measured"
+    },
+    {
+      "method": "panel bge",
+      "nmi": 0.8946,
+      "ari": 0.9197,
+      "acc": 0.9667,
+      "source": "measured"
+    },
+    {
+      "method": "panel concat",
+      "nmi": 0.9172,
+      "ari": 0.9401,
+      "acc": 0.9748,
+      "source": "measured"
+    },
+    {
+      "method": "panel mix",
+      "nmi": 0.9182,
+      "ari": 0.9412,
+      "acc": 0.9753,
+      "source": "measured"
+    },
+    {
+      "method": "panel mpnet+tfidf",
+      "nmi": 0.9087,
+      "ari": 0.9309,
+      "acc": 0.9708,
+      "source": "measured"
+    },
+    {
+      "method": "panel chunk",
+      "nmi": 0.9002,
+      "ari": 0.9263,
+      "acc": 0.969,
+      "source": "measured"
+    },
+    {
+      "method": "panel title",
+      "nmi": 0.9092,
+      "ari": 0.9329,
+      "acc": 0.9717,
+      "source": "measured"
+    },
+    {
+      "method": "panel factorial_mix",
+      "nmi": 0.9164,
+      "ari": 0.9393,
+      "acc": 0.9744,
+      "source": "measured"
+    },
+    {
+      "method": "panel consensus",
+      "nmi": 0.9167,
+      "ari": 0.9387,
+      "acc": 0.9748,
+      "source": "measured"
+    },
+    {
+      "method": "panel gmm_mix",
+      "nmi": 0.9165,
+      "ari": 0.9402,
+      "acc": 0.9748,
+      "source": "measured"
+    },
+    {
+      "method": "panel spectral_knn",
+      "nmi": 0.6689,
+      "ari": 0.5081,
+      "acc": 0.5384,
+      "source": "measured"
+    },
+    {
+      "method": "majority of 11 clusterings",
+      "nmi": 0.9234,
+      "ari": 0.9451,
+      "acc": 0.9771,
+      "source": "measured"
+    },
+    {
+      "method": "majority + llm panel on ties",
+      "nmi": 0.918,
+      "ari": 0.9411,
+      "acc": 0.9753,
+      "source": "measured"
+    },
+    {
+      "method": "majority + llm named-desks on ties",
+      "nmi": 0.9216,
+      "ari": 0.944,
+      "acc": 0.9766,
+      "source": "measured"
+    },
+    {
+      "method": "oracle among panel labels on ties",
+      "nmi": 0.9334,
+      "ari": 0.9522,
+      "acc": 0.9802,
+      "source": "measured"
+    },
+    {
+      "method": "majority + llm pair-border n=40",
+      "nmi": 0.9205,
+      "ari": 0.9426,
+      "acc": 0.9757,
+      "source": "measured"
+    },
+    {
+      "method": "oracle majority-border n=40",
+      "nmi": 0.9396,
+      "ari": 0.9569,
+      "acc": 0.982,
+      "source": "measured"
+    },
+    {
+      "method": "majority + llm pair-border n=80",
+      "nmi": 0.9203,
+      "ari": 0.9426,
+      "acc": 0.9757,
+      "source": "measured"
+    },
+    {
+      "method": "oracle majority-border n=80",
+      "nmi": 0.9527,
+      "ari": 0.9674,
+      "acc": 0.9865,
+      "source": "measured"
+    }
+  ]
+}

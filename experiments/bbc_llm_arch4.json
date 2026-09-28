@@ -1,0 +1,209 @@
+{
+  "disclaimer": "Laboratory only. CGE production stays TF-IDF + DBSCAN at cosine 0.75.",
+  "published": {
+    "nmi": 0.9512,
+    "ari": 0.9666,
+    "acc": 0.9761,
+    "paper": "arXiv:2412.14867 Dec 2024 GCC*"
+  },
+  "n": 2225,
+  "detail": {
+    "s7_errors": 34,
+    "s8_errors": 35,
+    "s9_errors": 35,
+    "n": {
+      "thin8": 60,
+      "flips8": 2,
+      "foreign9": 2
+    },
+    "s8": {
+      "fix": 0,
+      "broke": 1
+    },
+    "s9": {
+      "fix": 0,
+      "broke": 0
+    },
+    "leftover_sample": [
+      {
+        "i": 19,
+        "title": "Call centre users 'lose patience'",
+        "gold": "business",
+        "pred": "tech"
+      },
+      {
+        "i": 78,
+        "title": "ID theft surge hits US consumers",
+        "gold": "business",
+        "pred": "tech"
+      },
+      {
+        "i": 105,
+        "title": "Golden rule 'intact' says ex-aide",
+        "gold": "business",
+        "pred": "politics"
+      },
+      {
+        "i": 112,
+        "title": "Brussels raps mobile call charges",
+        "gold": "business",
+        "pred": "tech"
+      },
+      {
+        "i": 128,
+        "title": "Iraq to invite phone licence bids",
+        "gold": "business",
+        "pred": "tech"
+      },
+      {
+        "i": 153,
+        "title": "Golden rule boost for Chancellor",
+        "gold": "business",
+        "pred": "politics"
+      },
+      {
+        "i": 165,
+        "title": "Crossrail link 'to get go-ahead'",
+        "gold": "business",
+        "pred": "politics"
+      },
+      {
+        "i": 204,
+        "title": "Orange colour clash set for court",
+        "gold": "business",
+        "pred": "tech"
+      },
+      {
+        "i": 207,
+        "title": "China's Shanda buys stake in Sina",
+        "gold": "business",
+        "pred": "tech"
+      },
+      {
+        "i": 223,
+        "title": "Man Utd to open books to Glazer",
+        "gold": "business",
+        "pred": "sport"
+      },
+      {
+        "i": 225,
+        "title": "McDonald's to sponsor MTV show",
+        "gold": "business",
+        "pred": "entertainment"
+      },
+      {
+        "i": 226,
+        "title": "Call to save manufacturing jobs",
+        "gold": "business",
+        "pred": "politics"
+      },
+      {
+        "i": 233,
+        "title": "Vodafone appoints new Japan boss",
+        "gold": "business",
+        "pred": "tech"
+      },
+      {
+        "i": 234,
+        "title": "Pension hitch for long-living men",
+        "gold": "business",
+        "pred": "politics"
+      },
+      {
+        "i": 235,
+        "title": "Card fraudsters 'targeting web'",
+        "gold": "business",
+        "pred": "tech"
+      },
+      {
+        "i": 242,
+        "title": "Making your office work for you",
+        "gold": "business",
+        "pred": "tech"
+      },
+      {
+        "i": 251,
+        "title": "BT offers equal access to rivals",
+        "gold": "business",
+        "pred": "tech"
+      },
+      {
+        "i": 254,
+        "title": "Call to overhaul UK state pension",
+        "gold": "business",
+        "pred": "politics"
+      },
+      {
+        "i": 381,
+        "title": "Ban on forced retirement under 65",
+        "gold": "business",
+        "pred": "politics"
+      },
+      {
+        "i": 446,
+        "title": "News Corp eyes video games market",
+        "gold": "business",
+        "pred": "tech"
+      }
+    ],
+    "note": "gold not used to pick documents; leftover_sample is diagnostic only"
+  },
+  "rows": [
+    {
+      "method": "1 majority",
+      "nmi": 0.9221,
+      "ari": 0.9442,
+      "acc": 0.9766,
+      "source": "measured"
+    },
+    {
+      "method": "2 sonnet pair",
+      "nmi": 0.9346,
+      "ari": 0.9545,
+      "acc": 0.9811,
+      "source": "measured"
+    },
+    {
+      "method": "3 opus flips+close3",
+      "nmi": 0.9368,
+      "ari": 0.9565,
+      "acc": 0.982,
+      "source": "measured"
+    },
+    {
+      "method": "4 odd-one-out",
+      "nmi": 0.9416,
+      "ari": 0.9598,
+      "acc": 0.9834,
+      "source": "measured"
+    },
+    {
+      "method": "5 neighbor 4/7",
+      "nmi": 0.945,
+      "ari": 0.9619,
+      "acc": 0.9843,
+      "source": "measured"
+    },
+    {
+      "method": "7 foreign neighbor",
+      "nmi": 0.9466,
+      "ari": 0.963,
+      "acc": 0.9847,
+      "source": "measured"
+    },
+    {
+      "method": "8 remargin pair then opus flips",
+      "nmi": 0.9456,
+      "ari": 0.9619,
+      "acc": 0.9843,
+      "source": "measured"
+    },
+    {
+      "method": "9 tight foreign then opus",
+      "nmi": 0.9456,
+      "ari": 0.9619,
+      "acc": 0.9843,
+      "source": "measured"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "target_nmi": 0.725,
+  "rows": [
+    {
+      "technique": "minilm_supcon_with_projection",
+      "epoch": 1,
+      "train_loss": 2.3614,
+      "kmeans_nmi": 0.5968,
+      "proto_nmi": 0.589,
+      "proto_acc": 0.6627,
+      "source": "measured"
+    },
+    {
+      "technique": "minilm_supcon_with_projection",
+      "epoch": 2,
+      "train_loss": 2.0731,
+      "kmeans_nmi": 0.6053,
+      "proto_nmi": 0.5961,
+      "proto_acc": 0.6735,
+      "source": "measured"
+    }
+  ]
+}

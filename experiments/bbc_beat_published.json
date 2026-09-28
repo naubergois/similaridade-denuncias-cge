@@ -1,0 +1,314 @@
+{
+  "disclaimer": "Laboratory only. CGE production stays TF-IDF + DBSCAN at cosine 0.75.",
+  "published": {
+    "nmi": 0.9512,
+    "ari": 0.9666,
+    "acc": 0.9761,
+    "paper": "arXiv:2412.14867 Dec 2024 GCC*"
+  },
+  "n": 2225,
+  "best": {
+    "method": "mpnet+bge+tfidf64",
+    "nmi": 0.9182,
+    "ari": 0.9412,
+    "acc": 0.9753,
+    "source": "measured"
+  },
+  "beat_published": false,
+  "rows": [
+    {
+      "method": "mpnet+bge+tfidf64",
+      "nmi": 0.9182,
+      "ari": 0.9412,
+      "acc": 0.9753,
+      "source": "measured"
+    },
+    {
+      "method": "concat mpnet+bge KMeans",
+      "nmi": 0.9172,
+      "ari": 0.9401,
+      "acc": 0.9748,
+      "source": "measured"
+    },
+    {
+      "method": "consensus mpnet+bge+tfidf",
+      "nmi": 0.9167,
+      "ari": 0.9387,
+      "acc": 0.9748,
+      "source": "measured"
+    },
+    {
+      "method": "concat factorial-kmeans",
+      "nmi": 0.9165,
+      "ari": 0.9391,
+      "acc": 0.9744,
+      "source": "measured"
+    },
+    {
+      "method": "mpnet residual-SGC \u03b1=0.05 factorial",
+      "nmi": 0.9131,
+      "ari": 0.9348,
+      "acc": 0.9726,
+      "source": "measured"
+    },
+    {
+      "method": "mpnet+PER/ORG w=0.30",
+      "nmi": 0.9121,
+      "ari": 0.9332,
+      "acc": 0.9717,
+      "source": "measured"
+    },
+    {
+      "method": "mpnet residual-SGC \u03b1=0.2",
+      "nmi": 0.912,
+      "ari": 0.9331,
+      "acc": 0.9721,
+      "source": "measured"
+    },
+    {
+      "method": "mpnet residual-SGC \u03b1=0.05",
+      "nmi": 0.9108,
+      "ari": 0.932,
+      "acc": 0.9712,
+      "source": "measured"
+    },
+    {
+      "method": "mpnet residual-SGC \u03b1=0.1",
+      "nmi": 0.9107,
+      "ari": 0.9317,
+      "acc": 0.9712,
+      "source": "measured"
+    },
+    {
+      "method": "mpnet residual-SGC \u03b1=0.1 factorial",
+      "nmi": 0.9106,
+      "ari": 0.9326,
+      "acc": 0.9717,
+      "source": "measured"
+    },
+    {
+      "method": "mpnet+lede w=0.45",
+      "nmi": 0.9095,
+      "ari": 0.9336,
+      "acc": 0.9721,
+      "source": "measured"
+    },
+    {
+      "method": "mpnet+title w=0.15",
+      "nmi": 0.9092,
+      "ari": 0.9329,
+      "acc": 0.9717,
+      "source": "measured"
+    },
+    {
+      "method": "mpnet+tfidf64 w=0.25",
+      "nmi": 0.9087,
+      "ari": 0.9309,
+      "acc": 0.9708,
+      "source": "measured"
+    },
+    {
+      "method": "mpnet factorial-kmeans",
+      "nmi": 0.9077,
+      "ari": 0.9308,
+      "acc": 0.9708,
+      "source": "measured"
+    },
+    {
+      "method": "mpnet+lede w=0.3",
+      "nmi": 0.9068,
+      "ari": 0.9307,
+      "acc": 0.9708,
+      "source": "measured"
+    },
+    {
+      "method": "mpnet KMeans",
+      "nmi": 0.9067,
+      "ari": 0.9306,
+      "acc": 0.9708,
+      "source": "measured"
+    },
+    {
+      "method": "mpnet+lede w=0.15",
+      "nmi": 0.9064,
+      "ari": 0.929,
+      "acc": 0.9699,
+      "source": "measured"
+    },
+    {
+      "method": "mpnet+title w=0.45",
+      "nmi": 0.9043,
+      "ari": 0.9291,
+      "acc": 0.9699,
+      "source": "measured"
+    },
+    {
+      "method": "mpnet+title w=0.3",
+      "nmi": 0.9043,
+      "ari": 0.9288,
+      "acc": 0.9699,
+      "source": "measured"
+    },
+    {
+      "method": "chunk+PER/ORG w=0.30",
+      "nmi": 0.9042,
+      "ari": 0.9286,
+      "acc": 0.9699,
+      "source": "measured"
+    },
+    {
+      "method": "mpnet residual-SGC \u03b1=0.2 factorial",
+      "nmi": 0.9041,
+      "ari": 0.9267,
+      "acc": 0.9694,
+      "source": "measured"
+    },
+    {
+      "method": "chunk+title+entity residual0.10",
+      "nmi": 0.9023,
+      "ari": 0.9275,
+      "acc": 0.9694,
+      "source": "measured"
+    },
+    {
+      "method": "chunk residual-SGC \u03b1=0.1",
+      "nmi": 0.902,
+      "ari": 0.9275,
+      "acc": 0.9694,
+      "source": "measured"
+    },
+    {
+      "method": "chunk residual-SGC \u03b1=0.2",
+      "nmi": 0.9014,
+      "ari": 0.9257,
+      "acc": 0.9685,
+      "source": "measured"
+    },
+    {
+      "method": "chunk+mpnet concat",
+      "nmi": 0.9013,
+      "ari": 0.9264,
+      "acc": 0.969,
+      "source": "measured"
+    },
+    {
+      "method": "chunk-mean factorial-kmeans",
+      "nmi": 0.9012,
+      "ari": 0.9273,
+      "acc": 0.9694,
+      "source": "measured"
+    },
+    {
+      "method": "chunk+title+entity KMeans",
+      "nmi": 0.9011,
+      "ari": 0.9264,
+      "acc": 0.969,
+      "source": "measured"
+    },
+    {
+      "method": "chunk residual-SGC \u03b1=0.05",
+      "nmi": 0.9009,
+      "ari": 0.9264,
+      "acc": 0.969,
+      "source": "measured"
+    },
+    {
+      "method": "mpnet chunk-mean KMeans",
+      "nmi": 0.9002,
+      "ari": 0.9263,
+      "acc": 0.969,
+      "source": "measured"
+    },
+    {
+      "method": "chunk+title+entity factorial",
+      "nmi": 0.8999,
+      "ari": 0.9257,
+      "acc": 0.9685,
+      "source": "measured"
+    },
+    {
+      "method": "chunk+title w=0.30",
+      "nmi": 0.8993,
+      "ari": 0.9254,
+      "acc": 0.9685,
+      "source": "measured"
+    },
+    {
+      "method": "blend mpnet/title/lede",
+      "nmi": 0.8955,
+      "ari": 0.9227,
+      "acc": 0.9676,
+      "source": "measured"
+    },
+    {
+      "method": "bge KMeans",
+      "nmi": 0.8946,
+      "ari": 0.9197,
+      "acc": 0.9667,
+      "source": "measured"
+    },
+    {
+      "method": "lede only KMeans",
+      "nmi": 0.8707,
+      "ari": 0.9024,
+      "acc": 0.9587,
+      "source": "measured"
+    },
+    {
+      "method": "chunk+title+entity self-train",
+      "nmi": 0.8661,
+      "ari": 0.8952,
+      "acc": 0.9551,
+      "source": "measured"
+    },
+    {
+      "method": "mpnet self-train keep=0.85",
+      "nmi": 0.8603,
+      "ari": 0.8874,
+      "acc": 0.9515,
+      "source": "measured"
+    },
+    {
+      "method": "chunk-mean self-train keep=0.75",
+      "nmi": 0.8598,
+      "ari": 0.8885,
+      "acc": 0.9519,
+      "source": "measured"
+    },
+    {
+      "method": "mpnet self-train keep=0.75",
+      "nmi": 0.8413,
+      "ari": 0.8698,
+      "acc": 0.9434,
+      "source": "measured"
+    },
+    {
+      "method": "mpnet self-train keep=0.6",
+      "nmi": 0.8209,
+      "ari": 0.8496,
+      "acc": 0.9339,
+      "source": "measured"
+    },
+    {
+      "method": "title only KMeans",
+      "nmi": 0.683,
+      "ari": 0.7268,
+      "acc": 0.8818,
+      "source": "measured"
+    },
+    {
+      "method": "mpnet mutual-kNN20 spectral",
+      "nmi": 0.1462,
+      "ari": 0.0183,
+      "acc": 0.3137,
+      "source": "measured"
+    },
+    {
+      "method": "mpnet mutual-kNN12 spectral",
+      "nmi": 0.0107,
+      "ari": 0.0004,
+      "acc": 0.2337,
+      "source": "measured"
+    }
+  ]
+}

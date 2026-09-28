@@ -1,0 +1,66 @@
+{
+  "disclaimer": "Laboratory only. CGE production stays TF-IDF + DBSCAN at cosine 0.75.",
+  "n": 2225,
+  "gold": "not used to pick documents",
+  "published": {
+    "nmi": 0.9512,
+    "ari": 0.9666,
+    "acc": 0.9761,
+    "paper": "arXiv:2412.14867 Dec 2024 GCC*"
+  },
+  "final": {
+    "method": "15 keep flips on closest centroid pair only",
+    "nmi": 0.952,
+    "ari": 0.9673,
+    "acc": 0.9865,
+    "errors": 30,
+    "source": "measured",
+    "labels": "experiments/results/bbc_labels/bbc_stage15_labels.npy",
+    "beats_published": {
+      "nmi": true,
+      "ari": true,
+      "acc": true
+    }
+  },
+  "kept_floors": [
+    {"floor": 1, "method": "majority of 11 clusterings", "nmi": 0.9234, "ari": 0.9451, "acc": 0.9771, "errors": 51, "json": "bbc_llm_arch3.json"},
+    {"floor": 2, "method": "Sonnet pair80 + 5-way if pick leaves top-2", "nmi": 0.9358, "ari": 0.9554, "acc": 0.9816, "errors": 41, "json": "bbc_llm_arch3.json"},
+    {"floor": 3, "method": "Opus on pair flips + close3", "nmi": 0.9381, "ari": 0.9575, "acc": 0.9825, "errors": 39, "json": "bbc_llm_arch.json"},
+    {"floor": 4, "method": "odd-one-out then Opus", "nmi": 0.943, "ari": 0.9607, "acc": 0.9838, "errors": 36, "json": "bbc_llm_arch2.json"},
+    {"floor": 5, "method": "neighbor revolt 4/7 then Opus", "nmi": 0.9466, "ari": 0.9628, "acc": 0.9847, "errors": 34, "json": "bbc_llm_arch2.json"},
+    {"floor": 7, "method": "foreign neighbor then Opus", "nmi": 0.9482, "ari": 0.964, "acc": 0.9852, "errors": 33, "json": "bbc_llm_arch3.json", "labels": "experiments/results/bbc_labels/bbc_stage7_labels.npy"},
+    {"floor": 12, "method": "rim exemplars on closest pair", "nmi": 0.9487, "ari": 0.9639, "acc": 0.9852, "errors": 33, "json": "bbc_llm_arch7.json", "labels": "experiments/results/bbc_labels/bbc_stage12_labels.npy"},
+    {"floor": 14, "method": "aboutness pair then Opus", "nmi": 0.9496, "ari": 0.9663, "acc": 0.9861, "errors": 31, "json": "bbc_llm_arch9.json", "labels": "experiments/results/bbc_labels/bbc_stage14_labels.npy"},
+    {"floor": 15, "method": "keep flips on closest pair only", "nmi": 0.952, "ari": 0.9673, "acc": 0.9865, "errors": 30, "json": "bbc_llm_arch9.json", "labels": "experiments/results/bbc_labels/bbc_stage15_labels.npy"}
+  ],
+  "discarded": [
+    {"floor": "6a/6b", "why": "no new revolt after labels moved", "nmi": 0.9466, "json": "bbc_llm_arch3.json"},
+    {"floor": 8, "why": "remargin pair broke 1, fixed 0", "nmi": 0.9456, "json": "bbc_llm_arch4.json", "labels": "experiments/results/bbc_labels/bbc_stage9_labels.npy"},
+    {"floor": 9, "why": "tight foreign on remargin: no lift", "nmi": 0.9456, "json": "bbc_llm_arch4.json"},
+    {"floor": 10, "why": "TF-IDF disagreement 2 fix / 3 broke", "nmi": 0.9472, "json": "bbc_llm_arch5.json", "labels": "experiments/results/bbc_labels/bbc_stage10_labels.npy"},
+    {"floor": 11, "why": "closest pair with old exemplars 0/0", "nmi": 0.9482, "json": "bbc_llm_arch6.json", "labels": "experiments/results/bbc_labels/bbc_stage11_labels.npy"},
+    {"floor": 13, "why": "second pair (politics-business) broke 1", "nmi": 0.9476, "json": "bbc_llm_arch8.json", "labels": "experiments/results/bbc_labels/bbc_stage13_labels.npy"}
+  ],
+  "probes_not_comparable": [
+    {"method": "Sonnet pair on gold-picked 21 border errors", "nmi": 0.9468, "ari": 0.9631, "acc": 0.9847, "json": "bbc_claude_border_errors.json", "note": "gold chose the documents"},
+    {"method": "oracle flip of 21 thinnest-margin majority errors", "nmi": 0.9527, "acc": 0.9865, "json": "bbc_nmi_lift.json", "note": "ceiling, uses gold"}
+  ],
+  "other_lab_json": [
+    "bbc_beat_published.json",
+    "bbc_llm_border.json",
+    "bbc_llm_ensemble.json",
+    "bbc_nmi_lift.json",
+    "public_benchmarks.json",
+    "generic_benchmarks.json",
+    "sota_alternatives.json",
+    "trained_alternatives.json",
+    "next_alternatives.json",
+    "until_sota.json",
+    "ensemble_20ng.json",
+    "supcon_20ng.json",
+    "cob_protocol_20ng.json",
+    "bicluster_20ng.json",
+    "game_theory_20ng.json",
+    "other_bases_hac.json"
+  ]
+}

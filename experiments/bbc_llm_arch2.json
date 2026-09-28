@@ -1,0 +1,69 @@
+{
+  "disclaimer": "Laboratory only. CGE production stays TF-IDF + DBSCAN at cosine 0.75.",
+  "published": {
+    "nmi": 0.9512,
+    "ari": 0.9666,
+    "acc": 0.9761,
+    "paper": "arXiv:2412.14867 Dec 2024 GCC*"
+  },
+  "n": 2225,
+  "detail": {
+    "architecture": [
+      "majority",
+      "sonnet pair",
+      "opus flips+close3",
+      "odd-one-out",
+      "neighbor revolt"
+    ],
+    "stage4_asked": 123,
+    "stage4_no": 81,
+    "stage5_revolt": 23,
+    "errors": {
+      "s3": 39,
+      "s4": 36,
+      "s5": 34
+    },
+    "s4_fixed": 5,
+    "s4_broke": 2,
+    "s5_fixed": 2,
+    "s5_broke": 0,
+    "note": "gold not used to pick documents"
+  },
+  "rows": [
+    {
+      "method": "1 majority of 11",
+      "nmi": 0.9234,
+      "ari": 0.9451,
+      "acc": 0.9771,
+      "source": "measured"
+    },
+    {
+      "method": "2 sonnet pair80 + exception",
+      "nmi": 0.9358,
+      "ari": 0.9554,
+      "acc": 0.9816,
+      "source": "measured"
+    },
+    {
+      "method": "3 opus audit flips+close3",
+      "nmi": 0.9381,
+      "ari": 0.9575,
+      "acc": 0.9825,
+      "source": "measured"
+    },
+    {
+      "method": "4 odd-one-out then opus",
+      "nmi": 0.943,
+      "ari": 0.9607,
+      "acc": 0.9838,
+      "source": "measured"
+    },
+    {
+      "method": "5 neighbor revolt then opus",
+      "nmi": 0.9466,
+      "ari": 0.9628,
+      "acc": 0.9847,
+      "source": "measured"
+    }
+  ]
+}
