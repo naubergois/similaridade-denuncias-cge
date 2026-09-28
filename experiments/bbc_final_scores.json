@@ -1,0 +1,84 @@
+{
+  "disclaimer": "Laboratory only. CGE production stays TF-IDF + DBSCAN at cosine 0.75.",
+  "published": {
+    "nmi": 0.9512,
+    "ari": 0.9666,
+    "acc": 0.9761,
+    "paper": "arXiv:2412.14867 Dec 2024 GCC*"
+  },
+  "final": {
+    "method": "bbc_stage15_labels",
+    "nmi": 0.952,
+    "ari": 0.9673,
+    "acc": 0.9865,
+    "source": "measured",
+    "file": "experiments/results/bbc_labels/bbc_stage15_labels.npy"
+  },
+  "beats_published": true,
+  "rows": [
+    {
+      "method": "bbc_stage10_labels",
+      "nmi": 0.9472,
+      "ari": 0.9629,
+      "acc": 0.9847,
+      "source": "measured",
+      "file": "experiments/results/bbc_labels/bbc_stage10_labels.npy"
+    },
+    {
+      "method": "bbc_stage11_labels",
+      "nmi": 0.9482,
+      "ari": 0.964,
+      "acc": 0.9852,
+      "source": "measured",
+      "file": "experiments/results/bbc_labels/bbc_stage11_labels.npy"
+    },
+    {
+      "method": "bbc_stage12_labels",
+      "nmi": 0.9487,
+      "ari": 0.9639,
+      "acc": 0.9852,
+      "source": "measured",
+      "file": "experiments/results/bbc_labels/bbc_stage12_labels.npy"
+    },
+    {
+      "method": "bbc_stage13_labels",
+      "nmi": 0.9476,
+      "ari": 0.9628,
+      "acc": 0.9847,
+      "source": "measured",
+      "file": "experiments/results/bbc_labels/bbc_stage13_labels.npy"
+    },
+    {
+      "method": "bbc_stage14_labels",
+      "nmi": 0.9496,
+      "ari": 0.9663,
+      "acc": 0.9861,
+      "source": "measured",
+      "file": "experiments/results/bbc_labels/bbc_stage14_labels.npy"
+    },
+    {
+      "method": "bbc_stage15_labels",
+      "nmi": 0.952,
+      "ari": 0.9673,
+      "acc": 0.9865,
+      "source": "measured",
+      "file": "experiments/results/bbc_labels/bbc_stage15_labels.npy"
+    },
+    {
+      "method": "bbc_stage7_labels",
+      "nmi": 0.9482,
+      "ari": 0.964,
+      "acc": 0.9852,
+      "source": "measured",
+      "file": "experiments/results/bbc_labels/bbc_stage7_labels.npy"
+    },
+    {
+      "method": "bbc_stage9_labels",
+      "nmi": 0.9456,
+      "ari": 0.9619,
+      "acc": 0.9843,
+      "source": "measured",
+      "file": "experiments/results/bbc_labels/bbc_stage9_labels.npy"
+    }
+  ]
+}
