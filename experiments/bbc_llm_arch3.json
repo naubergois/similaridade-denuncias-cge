@@ -1,0 +1,92 @@
+{
+  "disclaimer": "Laboratory only. CGE production stays TF-IDF + DBSCAN at cosine 0.75.",
+  "published": {
+    "nmi": 0.9512,
+    "ari": 0.9666,
+    "acc": 0.9761,
+    "paper": "arXiv:2412.14867 Dec 2024 GCC*"
+  },
+  "n": 2225,
+  "detail": {
+    "s5_errors": 34,
+    "s6a_errors": 34,
+    "s6b_errors": 34,
+    "s7_errors": 33,
+    "n": {
+      "r6a": 0,
+      "r6b": 2,
+      "foreign": 36
+    },
+    "s6a": {
+      "fix": 0,
+      "broke": 0
+    },
+    "s6b": {
+      "fix": 0,
+      "broke": 0
+    },
+    "s7": {
+      "fix": 1,
+      "broke": 0
+    },
+    "note": "gold not used to pick documents"
+  },
+  "rows": [
+    {
+      "method": "1 majority",
+      "nmi": 0.9234,
+      "ari": 0.9451,
+      "acc": 0.9771,
+      "source": "measured"
+    },
+    {
+      "method": "2 sonnet pair",
+      "nmi": 0.9358,
+      "ari": 0.9554,
+      "acc": 0.9816,
+      "source": "measured"
+    },
+    {
+      "method": "3 opus flips+close3",
+      "nmi": 0.9381,
+      "ari": 0.9575,
+      "acc": 0.9825,
+      "source": "measured"
+    },
+    {
+      "method": "4 odd-one-out",
+      "nmi": 0.943,
+      "ari": 0.9607,
+      "acc": 0.9838,
+      "source": "measured"
+    },
+    {
+      "method": "5 neighbor 4/7",
+      "nmi": 0.9466,
+      "ari": 0.9628,
+      "acc": 0.9847,
+      "source": "measured"
+    },
+    {
+      "method": "6a iterate 4/7 revolt",
+      "nmi": 0.9466,
+      "ari": 0.9628,
+      "acc": 0.9847,
+      "source": "measured"
+    },
+    {
+      "method": "6b softer 3/7 revolt",
+      "nmi": 0.9466,
+      "ari": 0.9628,
+      "acc": 0.9847,
+      "source": "measured"
+    },
+    {
+      "method": "7 foreign neighbor then opus",
+      "nmi": 0.9482,
+      "ari": 0.964,
+      "acc": 0.9852,
+      "source": "measured"
+    }
+  ]
+}

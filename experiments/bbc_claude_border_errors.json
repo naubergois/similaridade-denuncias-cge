@@ -1,0 +1,246 @@
+{
+  "disclaimer": "Laboratory only. CGE production stays TF-IDF + DBSCAN at cosine 0.75.",
+  "published": {
+    "nmi": 0.9512,
+    "ari": 0.9666,
+    "acc": 0.9761,
+    "paper": "arXiv:2412.14867 Dec 2024 GCC*"
+  },
+  "n": 2225,
+  "detail": {
+    "key_source": "ANTHROPIC_API_KEY already in the process environment; no key copied from another repo",
+    "models": [
+      "claude-sonnet-4-6",
+      "claude-opus-4-6"
+    ],
+    "majority_errors": 51,
+    "erred_in_border80": 21,
+    "examples": [
+      {
+        "i": 1963,
+        "title": "Players sought for $1m prize",
+        "gold": "tech",
+        "majority": "entertainment",
+        "second": "sport",
+        "lede": "Players sought for $1m prize UK gamers are getting a chance to take part in a $1m tournament thanks to one of the country's top teams. The Four-Kings clan is staging a Pop Idol typ"
+      },
+      {
+        "i": 442,
+        "title": "Kraft cuts snack ads for children",
+        "gold": "business",
+        "majority": "tech",
+        "second": "business",
+        "lede": "Kraft cuts snack ads for children Kraft plans to cut back on advertising of products like Oreo cookies and sugary Kool-Aid drinks as part of an effort to promote healthy eating. Th"
+      },
+      {
+        "i": 1353,
+        "title": "Gatlin and Hayes win Owen awards",
+        "gold": "sport",
+        "majority": "entertainment",
+        "second": "sport",
+        "lede": "Gatlin and Hayes win Owen awards American Olympic stars Justin Gatlin and Joanna Hayes have been named the winners of the 2004 Jesse Owens Awards, USA Track & Field's (USATF) top h"
+      },
+      {
+        "i": 2076,
+        "title": "Fast lifts rise into record books",
+        "gold": "tech",
+        "majority": "business",
+        "second": "tech",
+        "lede": "Fast lifts rise into record books Two high-speed lifts at the world's tallest building have been officially recognised as the planet's fastest. The lifts take only 30 seconds to wh"
+      },
+      {
+        "i": 150,
+        "title": "Bank voted 8-1 for no rate change",
+        "gold": "business",
+        "majority": "politics",
+        "second": "business",
+        "lede": "Bank voted 8-1 for no rate change The decision to keep interest rates on hold at 4.75% earlier this month was passed 8-1 by the Bank of England's rate-setting body, minutes have sh"
+      },
+      {
+        "i": 1436,
+        "title": "Ferdinand casts doubt over Glazer",
+        "gold": "sport",
+        "majority": "business",
+        "second": "sport",
+        "lede": "Ferdinand casts doubt over Glazer Rio Ferdinand has said he is unsure of Malcolm Glazer's motives after the American billionaire launched a new offer to buy Manchester United. The "
+      },
+      {
+        "i": 2014,
+        "title": "Online commons to spark debate",
+        "gold": "tech",
+        "majority": "politics",
+        "second": "tech",
+        "lede": "Online commons to spark debate Online communities set up by the UK government could encourage public debate and build trust, says the Institute of Public Policy Research (IPPR). Ex"
+      },
+      {
+        "i": 1879,
+        "title": "Sporting rivals go to extra time",
+        "gold": "tech",
+        "majority": "sport",
+        "second": "tech",
+        "lede": "Sporting rivals go to extra time The current slew of sports games offers unparalleled opportunities for fans who like to emulate on-field action without ever moving from the couch."
+      },
+      {
+        "i": 918,
+        "title": "E-University 'disgraceful waste'",
+        "gold": "politics",
+        "majority": "tech",
+        "second": "politics",
+        "lede": "E-University 'disgraceful waste' A failed government scheme to offer UK university courses online has been branded a \"disgraceful waste\" by MPs. The e-University was scrapped last "
+      },
+      {
+        "i": 1958,
+        "title": "GTA sequel is criminally good",
+        "gold": "tech",
+        "majority": "entertainment",
+        "second": "tech",
+        "lede": "GTA sequel is criminally good The Grand Theft Auto series of games have set themselves the very highest of standards in recent years, but the newest addition is more than able to l"
+      },
+      {
+        "i": 503,
+        "title": "Aids and climate top Davos agenda",
+        "gold": "business",
+        "majority": "politics",
+        "second": "business",
+        "lede": "Aids and climate top Davos agenda Climate change and the fight against Aids are leading the list of concerns for the first day of the World Economic Forum in the Swiss resort of Da"
+      },
+      {
+        "i": 912,
+        "title": "Tsunami debt deal to be announced",
+        "gold": "politics",
+        "majority": "business",
+        "second": "politics",
+        "lede": "Tsunami debt deal to be announced Chancellor Gordon Brown has said he hopes to announce a deal to suspend debt interest repayments by tsunami-hit nations later on Friday. The agree"
+      },
+      {
+        "i": 112,
+        "title": "Brussels raps mobile call charges",
+        "gold": "business",
+        "majority": "tech",
+        "second": "business",
+        "lede": "Brussels raps mobile call charges The European Commission has written to the mobile phone operators Vodafone and T-Mobile to challenge \"the high rates\" they charge for internationa"
+      },
+      {
+        "i": 1073,
+        "title": "Hatfield executives go on trial",
+        "gold": "politics",
+        "majority": "business",
+        "second": "politics",
+        "lede": "Hatfield executives go on trial Engineering firm Balfour Beatty and five railway managers are to go on trial for manslaughter over the Hatfield rail crash in 2000. Four people died"
+      },
+      {
+        "i": 1949,
+        "title": "'Ultimate game' award for Doom 3",
+        "gold": "tech",
+        "majority": "entertainment",
+        "second": "tech",
+        "lede": "'Ultimate game' award for Doom 3 Sci-fi shooter Doom 3 has blasted away the competition at a major games ceremony, the Golden Joystick awards. It was the only title to win twice, w"
+      },
+      {
+        "i": 1994,
+        "title": "'Ultimate game' award for Doom 3",
+        "gold": "tech",
+        "majority": "entertainment",
+        "second": "tech",
+        "lede": "'Ultimate game' award for Doom 3 Sci-fi shooter Doom 3 has blasted away the competition at a major games ceremony, the Golden Joystick awards. It was the only title to win twice, w"
+      },
+      {
+        "i": 20,
+        "title": "Rank 'set to sell off film unit'",
+        "gold": "business",
+        "majority": "entertainment",
+        "second": "business",
+        "lede": "Rank 'set to sell off film unit' Leisure group Rank could unveil plans to demerge its film services unit and sell its media business, reports claim. Rank, formerly famous for the C"
+      },
+      {
+        "i": 1925,
+        "title": "Blogger grounded by her airline",
+        "gold": "tech",
+        "majority": "entertainment",
+        "second": "tech",
+        "lede": "Blogger grounded by her airline A US airline attendant is fighting for her job after she was suspended over postings on her blog, or online diary. Queen of the Sky, otherwise known"
+      },
+      {
+        "i": 240,
+        "title": "G7 backs Africa debt relief plan",
+        "gold": "business",
+        "majority": "politics",
+        "second": "business",
+        "lede": "G7 backs Africa debt relief plan G7 finance ministers have backed plans to write off up to 100% of the debts of some of the world's poorest countries. UK chancellor Gordon Brown sa"
+      },
+      {
+        "i": 210,
+        "title": "Electronics firms eye plasma deal",
+        "gold": "business",
+        "majority": "tech",
+        "second": "business",
+        "lede": "Electronics firms eye plasma deal Consumer electronics giants Hitachi and Matshushita Electric are joining forces to share and develop technology for flat screen televisions. The t"
+      },
+      {
+        "i": 1094,
+        "title": "Game warnings 'must be clearer'",
+        "gold": "politics",
+        "majority": "tech",
+        "second": "politics",
+        "lede": "Game warnings 'must be clearer' Violent video games should carry larger warnings so parents can understand what their children are playing, the trade and industry secretary has sai"
+      }
+    ],
+    "sonnet_pair_errors": 34,
+    "opus_pair_errors": 37,
+    "sonnet_named_errors": 38,
+    "opus_named_errors": 35,
+    "sonnet_fair80_errors": 42,
+    "note": "gold-picked rows use the label file to choose the docs. fair_border does not."
+  },
+  "rows": [
+    {
+      "method": "majority of 11 clusterings",
+      "nmi": 0.9234,
+      "ari": 0.9451,
+      "acc": 0.9771,
+      "source": "measured"
+    },
+    {
+      "method": "sonnet pair on gold-picked border errors",
+      "nmi": 0.9468,
+      "ari": 0.9631,
+      "acc": 0.9847,
+      "source": "measured"
+    },
+    {
+      "method": "opus pair on gold-picked border errors",
+      "nmi": 0.9435,
+      "ari": 0.96,
+      "acc": 0.9834,
+      "source": "measured"
+    },
+    {
+      "method": "sonnet named on gold-picked border errors",
+      "nmi": 0.9418,
+      "ari": 0.9592,
+      "acc": 0.9829,
+      "source": "measured"
+    },
+    {
+      "method": "opus named on gold-picked border errors",
+      "nmi": 0.9453,
+      "ari": 0.9622,
+      "acc": 0.9843,
+      "source": "measured"
+    },
+    {
+      "method": "sonnet pair on fair border n=80",
+      "nmi": 0.9346,
+      "ari": 0.9545,
+      "acc": 0.9811,
+      "source": "measured"
+    },
+    {
+      "method": "oracle majority-border n=80",
+      "nmi": 0.9527,
+      "ari": 0.9674,
+      "acc": 0.9865,
+      "source": "measured"
+    }
+  ]
+}

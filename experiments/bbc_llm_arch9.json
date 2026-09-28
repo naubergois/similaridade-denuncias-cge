@@ -1,0 +1,62 @@
+{
+  "disclaimer": "Laboratory only. CGE production stays TF-IDF + DBSCAN at cosine 0.75.",
+  "published": {
+    "nmi": 0.9512,
+    "ari": 0.9666,
+    "acc": 0.9761,
+    "paper": "arXiv:2412.14867 Dec 2024 GCC*"
+  },
+  "n": 2225,
+  "detail": {
+    "blurbs": [
+      "These articles all relate to entertainment and arts industry topics.",
+      "UK political news from the lead-up to a general election.",
+      "Global economic and financial developments.",
+      "They all relate to developments in digital and internet technology.",
+      "They do not share a common news event \u2014 the articles cover unrelated topics (Welsh rugby, Manchester United ownership, a"
+    ],
+    "routed": 59,
+    "sonnet_flips": 16,
+    "closest_pair": [
+      2,
+      3
+    ],
+    "applied_on_pair": 5,
+    "suppressed_off_pair": 3,
+    "s12_errors": 33,
+    "s14_errors": 31,
+    "s15_errors": 30,
+    "s14": {
+      "fix": 5,
+      "broke": 3
+    },
+    "s15": {
+      "fix": 4,
+      "broke": 1
+    },
+    "note": "gold not used to pick documents; off-pair flips discarded"
+  },
+  "rows": [
+    {
+      "method": "12 rim-exemplars (saved)",
+      "nmi": 0.9487,
+      "ari": 0.9639,
+      "acc": 0.9852,
+      "source": "measured"
+    },
+    {
+      "method": "14 aboutness pair then opus",
+      "nmi": 0.9496,
+      "ari": 0.9663,
+      "acc": 0.9861,
+      "source": "measured"
+    },
+    {
+      "method": "15 keep flips on closest pair only",
+      "nmi": 0.952,
+      "ari": 0.9673,
+      "acc": 0.9865,
+      "source": "measured"
+    }
+  ]
+}

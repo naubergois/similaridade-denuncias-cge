@@ -1,0 +1,129 @@
+{
+  "disclaimer": "Laboratory only. CGE production stays TF-IDF + DBSCAN at cosine 0.75.",
+  "published": {
+    "nmi": 0.9512,
+    "ari": 0.9666,
+    "acc": 0.9761,
+    "paper": "arXiv:2412.14867 Dec 2024 GCC*"
+  },
+  "n": 2225,
+  "detail": {
+    "tfidf_conflicts_all": 56,
+    "routed": 50,
+    "routed_are_errors_diag": 8,
+    "sonnet_flips": 8,
+    "s7_errors": 33,
+    "s10_errors": 34,
+    "fix": 2,
+    "broke": 3,
+    "leftover_sample": [
+      {
+        "i": 19,
+        "title": "Call centre users 'lose patience'",
+        "gold": "business",
+        "pred": "tech"
+      },
+      {
+        "i": 78,
+        "title": "ID theft surge hits US consumers",
+        "gold": "business",
+        "pred": "tech"
+      },
+      {
+        "i": 105,
+        "title": "Golden rule 'intact' says ex-aide",
+        "gold": "business",
+        "pred": "politics"
+      },
+      {
+        "i": 112,
+        "title": "Brussels raps mobile call charges",
+        "gold": "business",
+        "pred": "tech"
+      },
+      {
+        "i": 128,
+        "title": "Iraq to invite phone licence bids",
+        "gold": "business",
+        "pred": "tech"
+      },
+      {
+        "i": 153,
+        "title": "Golden rule boost for Chancellor",
+        "gold": "business",
+        "pred": "politics"
+      },
+      {
+        "i": 165,
+        "title": "Crossrail link 'to get go-ahead'",
+        "gold": "business",
+        "pred": "politics"
+      },
+      {
+        "i": 204,
+        "title": "Orange colour clash set for court",
+        "gold": "business",
+        "pred": "tech"
+      },
+      {
+        "i": 210,
+        "title": "Electronics firms eye plasma deal",
+        "gold": "business",
+        "pred": "tech"
+      },
+      {
+        "i": 225,
+        "title": "McDonald's to sponsor MTV show",
+        "gold": "business",
+        "pred": "entertainment"
+      },
+      {
+        "i": 226,
+        "title": "Call to save manufacturing jobs",
+        "gold": "business",
+        "pred": "politics"
+      },
+      {
+        "i": 233,
+        "title": "Vodafone appoints new Japan boss",
+        "gold": "business",
+        "pred": "tech"
+      },
+      {
+        "i": 234,
+        "title": "Pension hitch for long-living men",
+        "gold": "business",
+        "pred": "politics"
+      },
+      {
+        "i": 235,
+        "title": "Card fraudsters 'targeting web'",
+        "gold": "business",
+        "pred": "tech"
+      },
+      {
+        "i": 242,
+        "title": "Making your office work for you",
+        "gold": "business",
+        "pred": "tech"
+      }
+    ],
+    "note": "gold not used to pick documents; leftover_sample is diagnostic only"
+  },
+  "rows": [
+    {
+      "method": "7 foreign neighbor (saved)",
+      "nmi": 0.9482,
+      "ari": 0.964,
+      "acc": 0.9852,
+      "source": "measured"
+    },
+    {
+      "method": "10 tfidf-disagree pair then opus",
+      "nmi": 0.9472,
+      "ari": 0.9629,
+      "acc": 0.9847,
+      "source": "measured"
+    }
+  ]
+}

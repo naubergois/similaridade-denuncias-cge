@@ -1,0 +1,33 @@
+{
+  "disclaimer": "Laboratory only. CGE production unchanged. Published NMI 0.725 is a model trained on the train split.",
+  "split": "sklearn 20 Newsgroups test, headers/footers/quotes removed",
+  "matrix": "TF-IDF 1-2 grams, 8000 features, plus a constant column so no document row is empty",
+  "zero_rows_before_constant_column": 18,
+  "rows": [
+    {
+      "name": "spectral_coclustering_k20",
+      "n": 7317,
+      "n_clusters": 18,
+      "nmi": 0.2672,
+      "ami": 0.2611,
+      "bcubed_f1": 0.2028,
+      "published_nmi": 0.725,
+      "source": "measured"
+    },
+    {
+      "name": "spectral_biclustering_20x20_log",
+      "error": "ValueError: Cannot make the data matrix nonnegative because it is sparse. Adding a value to every entry would make it no longer sparse.",
+      "source": "measured"
+    },
+    {
+      "name": "spectral_biclustering_20x20_bistochastic",
+      "n": 7317,
+      "n_clusters": 20,
+      "nmi": 0.1623,
+      "ami": 0.1542,
+      "bcubed_f1": 0.1469,
+      "published_nmi": 0.725,
+      "source": "measured"
+    }
+  ]
+}

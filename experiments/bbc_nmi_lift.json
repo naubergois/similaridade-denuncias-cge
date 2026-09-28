@@ -1,0 +1,81 @@
+{
+  "disclaimer": "Laboratory only. CGE production stays TF-IDF + DBSCAN at cosine 0.75.",
+  "published": {
+    "nmi": 0.9512,
+    "ari": 0.9666,
+    "acc": 0.9761,
+    "paper": "arXiv:2412.14867 Dec 2024 GCC*"
+  },
+  "n": 2225,
+  "detail": {
+    "model": "claude-sonnet-4-6",
+    "majority_errors": 52,
+    "five80_errors": 49,
+    "five120_errors": 50,
+    "five120_plus_ring_errors": 49,
+    "five80_fixed": 10,
+    "five80_broke": 7,
+    "five120_fixed": 13,
+    "five120_broke": 11,
+    "extra_n": 40,
+    "note": "five-way exemplars, no desk names, gold not used to pick docs",
+    "best_fair": {
+      "method": "sonnet pair n=80 + 5-way only if pick leaves top-2",
+      "nmi": 0.9358,
+      "ari": 0.9554,
+      "acc": 0.9816,
+      "overlay": "Players sought for $1m prize"
+    }
+  },
+  "rows": [
+    {
+      "method": "majority of 11",
+      "nmi": 0.9221,
+      "ari": 0.9442,
+      "acc": 0.9766,
+      "source": "measured"
+    },
+    {
+      "method": "sonnet 5-way border n=80 long-text",
+      "nmi": 0.9258,
+      "ari": 0.9472,
+      "acc": 0.978,
+      "source": "measured"
+    },
+    {
+      "method": "sonnet 5-way border n=120 long-text",
+      "nmi": 0.9234,
+      "ari": 0.9457,
+      "acc": 0.9775,
+      "source": "measured"
+    },
+    {
+      "method": "sonnet 5-way n=120 + clash/geo ring",
+      "nmi": 0.9244,
+      "ari": 0.9468,
+      "acc": 0.978,
+      "source": "measured"
+    },
+    {
+      "method": "oracle majority-border n=80",
+      "nmi": 0.9527,
+      "ari": 0.9674,
+      "acc": 0.9865,
+      "source": "measured"
+    },
+    {
+      "method": "oracle majority-border n=120",
+      "nmi": 0.9609,
+      "ari": 0.9737,
+      "acc": 0.9892,
+      "source": "measured"
+    },
+    {
+      "method": "sonnet pair n=80 + 5-way only if outside top-2",
+      "nmi": 0.9358,
+      "ari": 0.9554,
+      "acc": 0.9816,
+      "source": "measured"
+    }
+  ]
+}

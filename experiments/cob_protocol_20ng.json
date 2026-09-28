@@ -1,0 +1,72 @@
+{
+  "protocol": "bags of 50, HAC ward, k = topics in the bag, macro mean",
+  "published_20ng": {
+    "SBERT_COB": {
+      "ri": 0.925,
+      "ari": 0.233,
+      "nmi": 0.725
+    },
+    "SBERT_Triplet": {
+      "ri": 0.924,
+      "ari": 0.223,
+      "nmi": 0.721
+    },
+    "SBERT_raw": {
+      "ri": 0.754,
+      "ari": 0.041,
+      "nmi": 0.582
+    },
+    "TFIDF": {
+      "ri": 0.624,
+      "ari": 0.008,
+      "nmi": 0.506
+    }
+  },
+  "rows": [
+    {
+      "encoder": "minilm",
+      "bags": 146,
+      "source": "measured",
+      "nmi": 0.7526,
+      "ari": 0.2724,
+      "ri": 0.9347,
+      "ami": 0.328,
+      "homogeneity": 0.7615,
+      "completeness": 0.744,
+      "v_measure": 0.7526,
+      "fmi": 0.3077,
+      "purity": 0.6219,
+      "bcubed_f1": 0.5655
+    },
+    {
+      "encoder": "mpnet",
+      "bags": 146,
+      "source": "measured",
+      "nmi": 0.7618,
+      "ari": 0.2981,
+      "ri": 0.9368,
+      "ami": 0.3537,
+      "homogeneity": 0.7704,
+      "completeness": 0.7534,
+      "v_measure": 0.7618,
+      "fmi": 0.3323,
+      "purity": 0.6363,
+      "bcubed_f1": 0.5801
+    },
+    {
+      "encoder": "bge-base",
+      "bags": 146,
+      "source": "measured",
+      "nmi": 0.7663,
+      "ari": 0.3243,
+      "ri": 0.9319,
+      "ami": 0.3954,
+      "homogeneity": 0.7613,
+      "completeness": 0.7716,
+      "v_measure": 0.7663,
+      "fmi": 0.3612,
+      "purity": 0.6555,
+      "bcubed_f1": 0.6027
+    }
+  ]
+}

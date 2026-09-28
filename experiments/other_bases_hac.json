@@ -1,0 +1,136 @@
+{
+  "rows": [
+    {
+      "pack": "BBC News",
+      "encoder": "minilm",
+      "gold_classes": 5,
+      "note": "bbc-fulltext.zip, 5 topics, all kept files",
+      "bags": {
+        "n": 2225,
+        "groups": 44,
+        "ri": 0.8604,
+        "ari": 0.5735,
+        "nmi": 0.6938,
+        "source": "measured"
+      },
+      "full": {
+        "n": 2225,
+        "groups": 1,
+        "ri": 0.9432,
+        "ari": 0.8247,
+        "nmi": 0.7937,
+        "source": "measured"
+      }
+    },
+    {
+      "pack": "BBC News",
+      "encoder": "mpnet",
+      "gold_classes": 5,
+      "note": "bbc-fulltext.zip, 5 topics, all kept files",
+      "bags": {
+        "n": 2225,
+        "groups": 44,
+        "ri": 0.8744,
+        "ari": 0.6191,
+        "nmi": 0.745,
+        "source": "measured"
+      },
+      "full": {
+        "n": 2225,
+        "groups": 1,
+        "ri": 0.9597,
+        "ari": 0.8757,
+        "nmi": 0.8485,
+        "source": "measured"
+      }
+    },
+    {
+      "pack": "BBC News",
+      "encoder": "bge-base",
+      "gold_classes": 5,
+      "note": "bbc-fulltext.zip, 5 topics, all kept files",
+      "bags": {
+        "n": 2225,
+        "groups": 44,
+        "ri": 0.8834,
+        "ari": 0.652,
+        "nmi": 0.7513,
+        "source": "measured"
+      },
+      "full": {
+        "n": 2225,
+        "groups": 1,
+        "ri": 0.9583,
+        "ari": 0.8714,
+        "nmi": 0.8471,
+        "source": "measured"
+      }
+    },
+    {
+      "pack": "Reuters-21578",
+      "encoder": "minilm",
+      "gold_classes": 8,
+      "note": "reuters21578.tar.gz, single-topic BODY+TITLE, top-8 topics, up to 200 docs/topic, seed=20260925, topics=['acq', 'crude', 'earn', 'interest', 'money-fx', 'money-supply', 'ship', 'trade']",
+      "bags": {
+        "n": 1510,
+        "groups": 30,
+        "ri": 0.8836,
+        "ari": 0.4807,
+        "nmi": 0.6997,
+        "source": "measured"
+      },
+      "full": {
+        "n": 1510,
+        "groups": 1,
+        "ri": 0.8917,
+        "ari": 0.5248,
+        "nmi": 0.6549,
+        "source": "measured"
+      }
+    },
+    {
+      "pack": "Reuters-21578",
+      "encoder": "mpnet",
+      "gold_classes": 8,
+      "note": "reuters21578.tar.gz, single-topic BODY+TITLE, top-8 topics, up to 200 docs/topic, seed=20260925, topics=['acq', 'crude', 'earn', 'interest', 'money-fx', 'money-supply', 'ship', 'trade']",
+      "bags": {
+        "n": 1510,
+        "groups": 30,
+        "ri": 0.8983,
+        "ari": 0.5444,
+        "nmi": 0.7394,
+        "source": "measured"
+      },
+      "full": {
+        "n": 1510,
+        "groups": 1,
+        "ri": 0.9237,
+        "ari": 0.6648,
+        "nmi": 0.7375,
+        "source": "measured"
+      }
+    },
+    {
+      "pack": "Reuters-21578",
+      "encoder": "bge-base",
+      "gold_classes": 8,
+      "note": "reuters21578.tar.gz, single-topic BODY+TITLE, top-8 topics, up to 200 docs/topic, seed=20260925, topics=['acq', 'crude', 'earn', 'interest', 'money-fx', 'money-supply', 'ship', 'trade']",
+      "bags": {
+        "n": 1510,
+        "groups": 30,
+        "ri": 0.8894,
+        "ari": 0.5147,
+        "nmi": 0.7158,
+        "source": "measured"
+      },
+      "full": {
+        "n": 1510,
+        "groups": 1,
+        "ri": 0.9282,
+        "ari": 0.6746,
+        "nmi": 0.7323,
+        "source": "measured"
+      }
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "disclaimer": "Laboratory only. CGE production stays TF-IDF + DBSCAN at cosine 0.75.",
+  "published": {
+    "nmi": 0.9512,
+    "ari": 0.9666,
+    "acc": 0.9761,
+    "paper": "arXiv:2412.14867 Dec 2024 GCC*"
+  },
+  "n": 2225,
+  "detail": {
+    "second_pair": [
+      1,
+      2
+    ],
+    "first_pair": [
+      2,
+      3
+    ],
+    "centroid_sim": 0.7175340056419373,
+    "routed": 32,
+    "s12_errors": 33,
+    "s13_errors": 34,
+    "fix": 0,
+    "broke": 1,
+    "note": "gold not used to pick documents"
+  },
+  "rows": [
+    {
+      "method": "12 rim-exemplars (saved)",
+      "nmi": 0.9487,
+      "ari": 0.9639,
+      "acc": 0.9852,
+      "source": "measured"
+    },
+    {
+      "method": "13 second-pair rim then opus",
+      "nmi": 0.9476,
+      "ari": 0.9628,
+      "acc": 0.9847,
+      "source": "measured"
+    }
+  ]
+}

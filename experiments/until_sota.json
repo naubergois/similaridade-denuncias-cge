@@ -1,0 +1,84 @@
+{
+  "disclaimer": "Laboratory only. CGE production stays TF-IDF+DBSCAN. Target is NMI 0.725 on the 20 Newsgroups test split.",
+  "target_nmi": 0.725,
+  "rows": [
+    {
+      "technique": "minilm_softmax",
+      "epoch": 1,
+      "train_loss": 2.1055,
+      "kmeans_nmi": 0.5808,
+      "clf_acc": 0.6634,
+      "clf_nmi": 0.5883,
+      "target_nmi": 0.725,
+      "source": "measured"
+    },
+    {
+      "technique": "minilm_softmax",
+      "epoch": 2,
+      "train_loss": 1.2686,
+      "kmeans_nmi": 0.6137,
+      "clf_acc": 0.6836,
+      "clf_nmi": 0.6012,
+      "target_nmi": 0.725,
+      "source": "measured"
+    },
+    {
+      "technique": "minilm_softmax",
+      "epoch": 3,
+      "train_loss": 0.8815,
+      "kmeans_nmi": 0.6108,
+      "clf_acc": 0.6947,
+      "clf_nmi": 0.604,
+      "target_nmi": 0.725,
+      "source": "measured"
+    },
+    {
+      "technique": "minilm_softmax",
+      "epoch": 4,
+      "train_loss": 0.6584,
+      "kmeans_nmi": 0.6171,
+      "clf_acc": 0.7011,
+      "clf_nmi": 0.6109,
+      "target_nmi": 0.725,
+      "source": "measured"
+    },
+    {
+      "technique": "bge_plus_lda_projection",
+      "kmeans_nmi": 0.6494,
+      "clf_nmi": 0.6349,
+      "clf_acc": 0.7293,
+      "target_nmi": 0.725,
+      "source": "measured"
+    },
+    {
+      "technique": "distilbert_softmax",
+      "epoch": 1,
+      "train_loss": 1.1397,
+      "kmeans_nmi": 0.6068,
+      "clf_nmi": 0.6016,
+      "clf_acc": 0.6902,
+      "target_nmi": 0.725,
+      "source": "measured"
+    },
+    {
+      "technique": "distilbert_softmax",
+      "epoch": 2,
+      "train_loss": 0.6425,
+      "kmeans_nmi": 0.6236,
+      "clf_nmi": 0.6061,
+      "clf_acc": 0.7048,
+      "target_nmi": 0.725,
+      "source": "measured"
+    },
+    {
+      "technique": "distilbert_softmax",
+      "epoch": 3,
+      "train_loss": 0.3598,
+      "kmeans_nmi": 0.6295,
+      "clf_nmi": 0.5975,
+      "clf_acc": 0.6928,
+      "target_nmi": 0.725,
+      "source": "measured"
+    }
+  ]
+}
